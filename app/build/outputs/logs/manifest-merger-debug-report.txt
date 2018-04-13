@@ -1,0 +1,122 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-24:12
+MERGED from [com.android.support:design:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/2edb21a594f413a7e3350d5d59d992c0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/7ac9fdefd34508da5a0b2554f9623677/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/mike/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/0de34453416706c3ac7c39ca288296f2/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-v4:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/82f3255948de688896790d956f32c802/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/89afe6ea82dea37ca381dd46319f95d7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/77d648156bb4f41a546bc390f779543b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/32fb2774f7e647ddca2f269540385af9/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/2f197f0c225afcf6126fe5dfd6cef8f7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/45a2bd74af385c9e8db8cbf17a9e2fd2/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/4ceade050b5a01a93d42fd8c5cc4f5c5/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/transition-27.1.1.aar/255f63274db6ad496277f08b956908e2/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/24dd8dcaf79ad2258d295b5472c853b2/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/50a349bce099c767947c5692637fcb16/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/mike/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/d8b4a199e93186685390c27c50c4236a/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/mike/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/d7b41f004af89d40b09773fac543fc31/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/mike/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/c97d55bd0af89853718f1fd483895904/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] /home/mike/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/196b103dd9a71f82a15ac5b1245662fa/AndroidManifest.xml:17:1-22:12
+INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-24:12
+	package
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:3:5-49
+		INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
+		INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-24:12
+		INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-24:12
+		INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:5:5-22:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/mike/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/0de34453416706c3ac7c39ca288296f2/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/mike/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/0de34453416706c3ac7c39ca288296f2/AndroidManifest.xml:9:5-20
+	android:supportsRtl
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:11:9-40
+activity#com.babarehner.android.partsrunner.MainActivity
+ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:12:9-21:20
+	android:label
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:14:13-45
+	android:theme
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:15:13-56
+	android:name
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:13:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:16:13-20:29
+action#android.intent.action.MAIN
+ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:17:17-69
+	android:name
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:17:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:19:17-77
+	android:name
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:19:27-74
+uses-sdk
+INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
+INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:design:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/2edb21a594f413a7e3350d5d59d992c0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/2edb21a594f413a7e3350d5d59d992c0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/7ac9fdefd34508da5a0b2554f9623677/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/7ac9fdefd34508da5a0b2554f9623677/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/mike/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/0de34453416706c3ac7c39ca288296f2/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/mike/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/0de34453416706c3ac7c39ca288296f2/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-v4:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/82f3255948de688896790d956f32c802/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/82f3255948de688896790d956f32c802/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/89afe6ea82dea37ca381dd46319f95d7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/89afe6ea82dea37ca381dd46319f95d7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/77d648156bb4f41a546bc390f779543b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/77d648156bb4f41a546bc390f779543b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/32fb2774f7e647ddca2f269540385af9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/32fb2774f7e647ddca2f269540385af9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/2f197f0c225afcf6126fe5dfd6cef8f7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/2f197f0c225afcf6126fe5dfd6cef8f7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/45a2bd74af385c9e8db8cbf17a9e2fd2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/45a2bd74af385c9e8db8cbf17a9e2fd2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/4ceade050b5a01a93d42fd8c5cc4f5c5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/4ceade050b5a01a93d42fd8c5cc4f5c5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/transition-27.1.1.aar/255f63274db6ad496277f08b956908e2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/transition-27.1.1.aar/255f63274db6ad496277f08b956908e2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/24dd8dcaf79ad2258d295b5472c853b2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/24dd8dcaf79ad2258d295b5472c853b2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/50a349bce099c767947c5692637fcb16/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/50a349bce099c767947c5692637fcb16/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/mike/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/d8b4a199e93186685390c27c50c4236a/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/mike/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/d8b4a199e93186685390c27c50c4236a/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/mike/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/d7b41f004af89d40b09773fac543fc31/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/mike/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/d7b41f004af89d40b09773fac543fc31/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/mike/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/c97d55bd0af89853718f1fd483895904/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/mike/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/c97d55bd0af89853718f1fd483895904/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /home/mike/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/196b103dd9a71f82a15ac5b1245662fa/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /home/mike/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/196b103dd9a71f82a15ac5b1245662fa/AndroidManifest.xml:20:5-44
+INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
+INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
+		INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
+		INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
