@@ -13,6 +13,6 @@ App contains the following fields in a database.
 
 Sharing will be available on the app so that you can e-mail out your item information. 
 
-Future- each item will have a picture that your took shown in a List View.
+Future- each item will have a picture taken from your phone in a List View.
 
 
