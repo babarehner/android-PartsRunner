@@ -19,6 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name=".data.PartsRunnerProvider"
+            android:authorities="com.babarehner.android.partsrunner"
+            android:exported="false" />
+
     </application>
 
 </manifest>
