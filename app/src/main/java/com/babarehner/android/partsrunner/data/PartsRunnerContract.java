@@ -42,6 +42,7 @@ public class PartsRunnerContract {
         public static final String TABLE_NAME = "TStuff";
 
         // the globals and the columns
+        public static final String C_EQUIP_TYPE = "CEquipType";
         public static final String C_MANUFACTURER = "CManufacturer";
         public static final String C_MODEL_YEAR = "CModelYear";
         public static final String C_MODEL = "CModel";
