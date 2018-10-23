@@ -40,12 +40,12 @@ public class PartsRunnerDBHelper extends SQLiteOpenHelper {
         final String SQL_CREATE_STUFF_TABLE = "CREATE TABLE " +
                 PartsRunnerContract.MachineEntry.TABLE_NAME + " (" +
                 PartsRunnerContract.MachineEntry._ID + " INTEGER PRIMARY KEY, " +
-                PartsRunnerContract.MachineEntry.C_MACHINE_TYPE + " TEXT NOT NULL, " +
+                PartsRunnerContract.MachineEntry.C_MACHINE_TYPE + " TEXT, " +
                 PartsRunnerContract.MachineEntry.C_MANUFACTURER + " TEXT , " +
                 PartsRunnerContract.MachineEntry.C_MODEL_YEAR + " INTEGER, " +
                 PartsRunnerContract.MachineEntry.C_MODEL + " TEXT, " +
-                PartsRunnerContract.MachineEntry.C_MODEL_NO + " TEXT, " +
-                PartsRunnerContract.MachineEntry.C_SERIAL_NO + " TEXT, " +
+                PartsRunnerContract.MachineEntry.C_MODEL_NUM + " TEXT, " +
+                PartsRunnerContract.MachineEntry.C_SERIAL_NUM + " TEXT, " +
                 PartsRunnerContract.MachineEntry.C_MACHINE_NUM + " INTEGER, " +
                 PartsRunnerContract.MachineEntry.C_NOTES + " TEXT );";
 

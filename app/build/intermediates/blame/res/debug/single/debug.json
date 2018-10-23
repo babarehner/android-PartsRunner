@@ -476,6 +476,10 @@
         "source": "/home/mike/proj/android/PartsRunner/app/src/main/res/mipmap-mdpi/ic_launcher.png"
     },
     {
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/layout_activity_add_edit_item.xml.flat",
+        "source": "/home/mike/proj/android/PartsRunner/app/src/main/res/layout/activity_add_edit_item.xml"
+    },
+    {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/layout_abc_search_view.xml.flat",
         "source": "/home/mike/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/3da052ea34a288a1c6a6ac00d7901303/res/layout/abc_search_view.xml"
     },

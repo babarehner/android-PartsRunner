@@ -37,11 +37,15 @@ package com.babarehner.android.partsrunner;
  import android.view.MenuItem;
  import android.view.MotionEvent;
  import android.view.View;
+ import android.widget.ArrayAdapter;
  import android.widget.Button;
  import android.widget.DatePicker;
  import android.widget.EditText;
+ import android.widget.Spinner;
  import android.widget.TextView;
  import android.widget.Toast;
+
+ import com.babarehner.android.partsrunner.data.PartsRunnerContract;
 
  import java.util.Calendar;
 
@@ -53,7 +57,7 @@ package com.babarehner.android.partsrunner;
 
      private Uri mCurrentItemUri;
 
-     private EditText mSpinnerMachineType;
+     private Spinner mSpinnerMachineType;
      private EditText mEditTextYear;
      private EditText mEditTextManufacturer;
      private EditText mEditTextModel;
@@ -63,8 +67,8 @@ package com.babarehner.android.partsrunner;
      private EditText mEditTextNotes;
 
 
-     private TextView tvYear;
-     private Button pickYear;
+     private TextView mTextViewYear;
+     private Button mButtonPickYear;
      private int mYear;
 
      static final int DATE_DIALOG_ID = 99;
@@ -103,34 +107,39 @@ package com.babarehner.android.partsrunner;
          }
 
          // initialization required or it crashes
-         tvDate = (TextView) findViewById(R.id.tvDate);
+         mTextViewYear = (TextView) findViewById(R.id.et_year);
          // Find all input views to read from
-         mExNameEditText = (EditText) findViewById(R.id.edit_ex_name);
-         mWeightEditText = (EditText) findViewById(R.id.edit_weight_amnt);
-         mRepsEditText = (EditText) findViewById(R.id.edit_reps_num);
-         mSetsEditText = (EditText) findViewById(R.id.edit_sets_num);
-         mNotesEditText = (EditText) findViewById(R.id.edit_notes);
+         mSpinnerMachineType = findViewById(R.id.sp_machine_type);
+         mEditTextManufacturer = (EditText) findViewById(R.id.et_manufacturer);
+         mEditTextModel = (EditText) findViewById(R.id.et_model);
+         mEditTextModelNum = (EditText) findViewById(R.id.et_model_num);
+         mEditTextSerialNum = (EditText) findViewById(R.id.et_serial_num);
+         mEditTextItemNum = (EditText) findViewById(R.id.et_item_num);
+         mEditTextNotes = findViewById(R.id.et_notes);
 
          // Set up Touch Listener on all input fields to see if a field has been modified
-         mExNameEditText.setOnTouchListener(mTouchListener);
-         mWeightEditText.setOnTouchListener(mTouchListener);
-         mRepsEditText.setOnTouchListener(mTouchListener);
-         mSetsEditText.setOnTouchListener(mTouchListener);
-         mNotesEditText.setOnTouchListener(mTouchListener);
+         mSpinnerMachineType.setOnTouchListener(mTouchListener);
+         mEditTextManufacturer.setOnTouchListener(mTouchListener);
+         mEditTextModel.setOnTouchListener(mTouchListener);
+         mEditTextModelNum.setOnTouchListener(mTouchListener);
+         mEditTextSerialNum.setOnTouchListener(mTouchListener);
+         mEditTextNotes.setOnTouchListener(mTouchListener);
 
-         getDate();
+         // getYear();
      }
 
 
      @Override
      public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-         String[] projection = {ExerciseContract.ExerciseEntry._IDS,
-                 ExerciseContract.ExerciseEntry.C_EX_NAME,
-                 ExerciseContract.ExerciseEntry.C_WEIGHT,
-                 ExerciseContract.ExerciseEntry.C_REPS,
-                 ExerciseContract.ExerciseEntry.C_SETS,
-                 ExerciseContract.ExerciseEntry.C_DATE,
-                 ExerciseContract.ExerciseEntry.C_NOTES };
+         String[] projection = {PartsRunnerContract.MachineEntry._IDM,
+                 PartsRunnerContract.MachineEntry.C_MACHINE_TYPE,
+                 PartsRunnerContract.MachineEntry.C_MODEL_YEAR,
+                 PartsRunnerContract.MachineEntry.C_MANUFACTURER,
+                 PartsRunnerContract.MachineEntry.C_MODEL,
+                 PartsRunnerContract.MachineEntry.C_MODEL_NUM,
+                 PartsRunnerContract.MachineEntry.C_SERIAL_NUM,
+                 PartsRunnerContract.MachineEntry.C_MACHINE_NUM,
+                 PartsRunnerContract.MachineEntry.C_NOTES };
          // start a new thread
          return new CursorLoader(this, mCurrentItemUri, projection, null, null, null);
      }
@@ -139,28 +148,38 @@ package com.babarehner.android.partsrunner;
      public void onLoadFinished(Loader<Cursor> loader, Cursor c) {
          // move to the only row in the cursor
          if (c.moveToFirst()) {
-             int exNameColIndex = c.getColumnIndex(ExerciseContract.ExerciseEntry.C_EX_NAME);
-             int exWeightColIndex = c.getColumnIndex(ExerciseContract.ExerciseEntry.C_WEIGHT);
-             int exRepsColIndex = c.getColumnIndex(ExerciseContract.ExerciseEntry.C_REPS);
-             int exSetsColIndex = c.getColumnIndex(ExerciseContract.ExerciseEntry.C_SETS);
-             int exDateColIndex = c.getColumnIndex(ExerciseContract.ExerciseEntry.C_DATE);
-             int exNoteColIndex = c.getColumnIndex(ExerciseContract.ExerciseEntry.C_NOTES);
+             int machineTypeColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_MACHINE_TYPE);
+             int modelYearColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_MODEL_YEAR);
+             int manufacturerColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_MANUFACTURER);
+             int modelColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_MODEL);
+             int modelNumColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_MODEL_NUM);
+             int serialNumColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_SERIAL_NUM);
+             int machineNumColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_MACHINE_NUM);
+             int notesColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_NOTES);
 
              // use index to pull data out of the cursor
-             String exName = c.getString(exNameColIndex);
-             String exWeight = c.getString(exWeightColIndex);
-             String exReps = c.getString(exRepsColIndex);
-             String exSets = c.getString(exSetsColIndex);
-             String exDate = c.getString(exDateColIndex);
-             String exNote = c.getString(exNoteColIndex);
+             String machineType = c.getString(machineTypeColIndex);
+             int modelYear = c.getInt(modelYearColIndex);
+             String manufacturer = c.getString(manufacturerColIndex);
+             String model = c.getString(modelColIndex);
+             String modelNum = c.getString(modelNumColIndex);
+             String serialNum = c.getString(serialNumColIndex);
+             int machineNum = c.getInt(machineNumColIndex);
+             String notes = c.getString(notesColIndex);
 
-             // update the textviews
-             mExNameEditText.setText(exName);
-             mWeightEditText.setText(exWeight);
-             mRepsEditText.setText(exReps);
-             mSetsEditText.setText(exSets);
-             mNotesEditText.setText(exNote);
-             tvDate.setText(exDate);
+             // deal with the spinner view
+             ArrayAdapter arrayMachineType = (ArrayAdapter) mSpinnerMachineType.getAdapter();
+             int pos = arrayMachineType.getPosition(machineType);
+             mSpinnerMachineType.setSelection(pos);mEditTextSerialNum.setText(serialNum);
+             // update the rest of the views
+             mEditTextYear.setText(modelYear);
+             mEditTextManufacturer.setText(manufacturer);
+             mEditTextModel.setText(model);
+             mEditTextModelNum.setText(modelNum);
+             mEditTextSerialNum.setText(serialNum);
+             mEditTextItemNum.setText(machineNum);
+             mEditTextNotes.setText(notes);
+
          }
      }
 
@@ -168,12 +187,14 @@ package com.babarehner.android.partsrunner;
      @Override
      public void onLoaderReset(Loader<Cursor> loader) {
          // If invalid Loader clear data from input field
-         mExNameEditText.setText("");
-         mWeightEditText.setText("");
-         mRepsEditText.setText("");
-         mSetsEditText.setText("");
-         mNotesEditText.setText("");
-         tvDate.setText("");
+         mSpinnerMachineType.setSelection(0);
+         mEditTextYear.setText("");
+         mEditTextManufacturer.setText("");
+         mEditTextModel.setText("");
+         mEditTextModelNum.setText("");
+         mEditTextSerialNum.setText("");
+         mEditTextItemNum.setText("");
+         mEditTextNotes.setText("");
      }
 
      // set up date picker

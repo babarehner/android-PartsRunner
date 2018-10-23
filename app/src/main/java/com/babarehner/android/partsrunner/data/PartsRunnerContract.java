@@ -55,12 +55,13 @@ public class PartsRunnerContract {
         public static final String TABLE_NAME = "TMachines";
 
         // the globals and the columns
+        public static final String _IDM = BaseColumns._ID;
         public static final String C_MACHINE_TYPE = "CMachineType";
         public static final String C_MODEL_YEAR = "CModelYear";
         public static final String C_MANUFACTURER = "CManufacturer";
         public static final String C_MODEL = "CModel";
-        public static final String C_MODEL_NO = "CModelNo";
-        public static final String C_SERIAL_NO = "CSerialNo";
+        public static final String C_MODEL_NUM = "CModelNo";
+        public static final String C_SERIAL_NUM = "CSerialNo";
         public static final String C_MACHINE_NUM = "CMachineNum";   // if more than one same machine
         public static final String C_NOTES = "CNotes";
 
