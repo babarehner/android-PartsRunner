@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Parts Runner</string>
     <string name="action_settings">Settings</string>
+
+    <!-- activity_add_edit_item.xml -->
+    <string name="machine_type">Item Type:"</string>
+    <string name="year">Year</string>
+    <string name="manufacturer">Manufacturer:</string>
+    <string name="model">Model:</string>
+    <string name="model_num">Model No:</string>
+    <string name="serial_num">Serial No:</string>
+
 </resources>

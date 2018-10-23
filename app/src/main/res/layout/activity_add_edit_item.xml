@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/spinner_text_hint"
+                android:text="@string/machine_type"
+                style="@style/CategoryStyle"/>
+
+            <Spinner
+                android:id="@+id/sp_machine_type"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:spinnerMode="dropdown"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/pick_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/year"/>
+
+            <EditText
+                android:id="@+id/et_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_manufacturer"
+                android:text="@string/manufacturer"
+                style="@style/CategoryStyle"/>
+
+            <EditText
+                android:id="@+id/et_manufacturer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:textColor="@color/black"
+                android:inputType="text|textCapWords|textMultiLine"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_model"
+                android:text="@string/model"
+                style="@style/CategoryStyle"/>
+
+            <EditText
+                android:id="@+id/et_model"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:textColor="@color/black"
+                android:inputType="text|textCapWords|textMultiLine"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_model_num"
+                android:text="@string/model_num"
+                style="@style/CategoryStyle"/>
+
+            <EditText
+                android:id="@+id/et_model_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_serial_num"
+                android:text="@string/serial_num"
+                style="@style/CategoryStyle"/>
+
+            <EditText
+                android:id="@+id/et_serial_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="true"
+            android:textColor="@color/black"
+            android:inputType="textCapSentences|textMultiLine"
+            android:minLines="2"
+            android:hint="Add notes here"/>
+
+    </LinearLayout>
+
+
+
+</ScrollView>

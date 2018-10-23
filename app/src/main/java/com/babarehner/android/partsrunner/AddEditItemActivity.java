@@ -65,13 +65,13 @@ package com.babarehner.android.partsrunner;
 
      static final int DATE_DIALOG_ID = 99;
 
-     private boolean mExerciseChanged = false;   // When edit change made to an exercise row
+     private boolean mItemChanged = false;   // When edit change made to an exercise row
 
      // Touch Listener to check if changes made to a book
      private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
          @Override
          public boolean onTouch(View v, MotionEvent event) {
-             mExerciseChanged = true;
+             mItemChanged = true;
              return false;
          }
      };
@@ -79,7 +79,7 @@ package com.babarehner.android.partsrunner;
 
      protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
-         setContentView(R.layout.activity_strengthex);
+         setContentView(R.layout.activity_addedititem);
 
          //Get intent and get data from intent
          Intent intent = getIntent();
@@ -184,7 +184,7 @@ package com.babarehner.android.partsrunner;
              public void onClick(View v) {
                  // if on edit view and date button is clicked changed boolean in touch listener
                  if (mCurrentStrengthExUri != null) {
-                     mExerciseChanged = true;
+                     mItemChanged = true;
                  }
                  showDialog(DATE_DIALOG_ID);
              }
@@ -262,7 +262,7 @@ package com.babarehner.android.partsrunner;
              // this is the <- button on the header
              case android.R.id.home:
                  // book has not changed
-                 if (!mExerciseChanged) {
+                 if (!mItemChanged) {
                      NavUtils.navigateUpFromSameTask(StrengthExActivity.this);
                      return true;
                  }
@@ -405,7 +405,7 @@ package com.babarehner.android.partsrunner;
      // discard click listener that closed current activity.
      @Override
      public void onBackPressed() {
-         if (!mExerciseChanged) {
+         if (!mItemChanged) {
              super.onBackPressed();
              return;
          }
