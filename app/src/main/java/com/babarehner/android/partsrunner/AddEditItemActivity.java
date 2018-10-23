@@ -51,17 +51,21 @@ package com.babarehner.android.partsrunner;
 
      private final String LOG_TAG = AddEditItemActivity.class.getSimpleName();
 
-     private Uri mAddEditItemUri;
+     private Uri mCurrentItemUri;
 
-     private EditText mExNameEditText;
-     private EditText mWeightEditText;
-     private EditText mRepsEditText;
-     private EditText mSetsEditText;
-     private EditText mNotesEditText;
+     private EditText mSpinnerMachineType;
+     private EditText mEditTextYear;
+     private EditText mEditTextManufacturer;
+     private EditText mEditTextModel;
+     private EditText mEditTextModelNum;
+     private EditText mEditTextSerialNum;
+     private EditText mEditTextItemNum;
+     private EditText mEditTextNotes;
 
-     private TextView tvDate;
-     private Button pickDate;
-     private int mYear, mMonth, mDay;
+
+     private TextView tvYear;
+     private Button pickYear;
+     private int mYear;
 
      static final int DATE_DIALOG_ID = 99;
 
@@ -79,23 +83,23 @@ package com.babarehner.android.partsrunner;
 
      protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
-         setContentView(R.layout.activity_addedititem);
+         setContentView(R.layout.activity_add_edit_item);
 
          //Get intent and get data from intent
          Intent intent = getIntent();
-         mCurrentStrengthExUri = intent.getData();
-         // String str = mCurrentStrengthExUri.toString();
+         mCurrentItemUri = intent.getData();
+         // String str = mCurrentItemUri.toString();
 
          // If the intent does not contain a single item-  Uri FAB clicked
-         if (mCurrentStrengthExUri == null) {
+         if (mCurrentItemUri == null) {
              // set page header to add exercise
-             setTitle(getString(R.string.strengthex_activity_title_add_exercise));
+             setTitle(getString(R.string.activity_add_edit_item_title_add_machine));
              // take out the delete menu
              invalidateOptionsMenu();
          } else {
              // set page header to edit exercise
-             setTitle(getString(R.string.strengthex_activity_title_edit_exercise));
-             getLoaderManager().initLoader(EXISTING_EXERCISE_LOADER, null, StrengthExActivity.this);
+             setTitle(getString(R.string.activity_add_edit_item_title_edit_machine));
+             getLoaderManager().initLoader(EXISTING_ADD_EDIT_ITEM_LOADER, null, AddEditItemActivity.this);
          }
 
          // initialization required or it crashes
@@ -128,7 +132,7 @@ package com.babarehner.android.partsrunner;
                  ExerciseContract.ExerciseEntry.C_DATE,
                  ExerciseContract.ExerciseEntry.C_NOTES };
          // start a new thread
-         return new CursorLoader(this, mCurrentStrengthExUri, projection, null, null, null);
+         return new CursorLoader(this, mCurrentItemUri, projection, null, null, null);
      }
 
      @Override
@@ -183,7 +187,7 @@ package com.babarehner.android.partsrunner;
              @Override
              public void onClick(View v) {
                  // if on edit view and date button is clicked changed boolean in touch listener
-                 if (mCurrentStrengthExUri != null) {
+                 if (mCurrentItemUri != null) {
                      mItemChanged = true;
                  }
                  showDialog(DATE_DIALOG_ID);
@@ -239,7 +243,7 @@ package com.babarehner.android.partsrunner;
      public boolean onPrepareOptionsMenu(Menu m) {
          super.onPrepareOptionsMenu(m);
          // if this is add an exercise, hide "delete" menu item
-         if (mCurrentStrengthExUri == null) {
+         if (mCurrentItemUri == null) {
              MenuItem menuItem = m.findItem(R.id.action_delete);
              menuItem.setVisible(false);
          }
@@ -295,7 +299,7 @@ package com.babarehner.android.partsrunner;
 
 
          // if adding exercise and the name field is left blank do nothing
-         if (mCurrentStrengthExUri == null && TextUtils.isEmpty(exNameString)) {
+         if (mCurrentItemUri == null && TextUtils.isEmpty(exNameString)) {
              Toast.makeText(this, getString(R.string.missing_exercise_name),
                      Toast.LENGTH_SHORT).show();
              return;
@@ -309,7 +313,7 @@ package com.babarehner.android.partsrunner;
          values.put(ExerciseContract.ExerciseEntry.C_NOTES, notesString);
          values.put(ExerciseContract.ExerciseEntry.C_DATE, dateString);
 
-         if (mCurrentStrengthExUri == null) {
+         if (mCurrentItemUri == null) {
              // a new exercise
              // ***********
              Log.v(LOG_TAG, "in saveRecord " + ExerciseContract.ExerciseEntry.STRENGTH_URI.toString() + "\n" + values);
@@ -326,7 +330,7 @@ package com.babarehner.android.partsrunner;
              }
          } else {
              // existing book so update with content URI and pass in ContentValues
-             int rowsAffected = getContentResolver().update(mCurrentStrengthExUri, values, null, null);
+             int rowsAffected = getContentResolver().update(mCurrentItemUri, values, null, null);
              if (rowsAffected == 0) {
                  // TODO Check db- Text Not Null does not seem to be working or entering
                  // "" does not mean NOT Null- there must be an error message closer to the db!!!
@@ -343,8 +347,8 @@ package com.babarehner.android.partsrunner;
 
      // delete exercise from DB
      private void deleteExercise(){
-         if (mCurrentStrengthExUri != null) {
-             int rowsDeleted = getContentResolver().delete(mCurrentStrengthExUri, null, null);
+         if (mCurrentItemUri != null) {
+             int rowsDeleted = getContentResolver().delete(mCurrentItemUri, null, null);
              if (rowsDeleted == 0) {
                  Toast.makeText(this, getString(R.string.delete_exercise_failure),
                          Toast.LENGTH_SHORT).show();

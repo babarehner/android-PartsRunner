@@ -2,6 +2,9 @@
     <string name="app_name">Parts Runner</string>
     <string name="action_settings">Settings</string>
 
+    <string name="activity_add_edit_item_title_add_machine">Add Item</string>
+    <string name="activity_add_edit_item_title_edit_machine">Add Item</string>
+
     <!-- activity_add_edit_item.xml -->
     <string name="machine_type">Item Type:"</string>
     <string name="year">Year</string>
@@ -9,5 +12,6 @@
     <string name="model">Model:</string>
     <string name="model_num">Model No:</string>
     <string name="serial_num">Serial No:</string>
+    <string name="item_num">Item No:</string>
 
 </resources>

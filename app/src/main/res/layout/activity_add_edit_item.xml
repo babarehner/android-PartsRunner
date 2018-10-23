@@ -128,6 +128,27 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_item_num"
+                android:text="@string/item_num"
+                style="@style/CategoryStyle"/>
+
+            <EditText
+                android:id="@+id/et_item_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:hint="number of item if more than one"
+                android:textColor="@color/black"
+                android:inputType="number"/>
+
+        </LinearLayout>
+
         <EditText
             android:id="@+id/et_notes"
             android:layout_width="match_parent"
