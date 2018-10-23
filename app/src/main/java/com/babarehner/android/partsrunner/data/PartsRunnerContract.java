@@ -35,33 +35,35 @@ public class PartsRunnerContract {
     // to contact the content provider
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" +
             PARTS_RUNNER_AUTHORITY);
-    public static final String PATH_TABLE_NAME = "TStuff";
+    public static final String PATH_TABLE_NAME = "TMachines";
 
 
 
     // Inner class that defines parts runner table and columns
-    public static final class StuffEntry implements BaseColumns {
+    public static final class MachineEntry implements BaseColumns {
 
         // MIME type of the (@link #CONTENT_URI for a stuff database table
-        public static final String STUFF_LIST_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
+        public static final String MACHINE_LIST_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
                 + "/" + PARTS_RUNNER_AUTHORITY + "/" + PATH_TABLE_NAME;
         // MIME type of the (@link #CONTENT_URI for a single record
-        public static final String STUFF_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
+        public static final String MACHINE_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
                 + "/" + PARTS_RUNNER_AUTHORITY + "/" + PATH_TABLE_NAME;
         // Content URI to access the table data in the provider
         public static final Uri PARTS_RUNNER_URI = Uri.withAppendedPath(BASE_CONTENT_URI,
                 PATH_TABLE_NAME);
 
-        public static final String TABLE_NAME = "TStuff";
+        public static final String TABLE_NAME = "TMachines";
 
         // the globals and the columns
-        public static final String C_EQUIP_TYPE = "CEquipType";
-        public static final String C_MANUFACTURER = "CManufacturer";
+        public static final String C_MACHINE_TYPE = "CMachineType";
         public static final String C_MODEL_YEAR = "CModelYear";
+        public static final String C_MANUFACTURER = "CManufacturer";
         public static final String C_MODEL = "CModel";
         public static final String C_MODEL_NO = "CModelNo";
         public static final String C_SERIAL_NO = "CSerialNo";
+        public static final String C_MACHINE_NUM = "CMachineNum";   // if more than one same machine
         public static final String C_NOTES = "CNotes";
+
     }
 
 }

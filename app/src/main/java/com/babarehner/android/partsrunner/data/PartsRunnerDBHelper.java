@@ -27,7 +27,7 @@ public class PartsRunnerDBHelper extends SQLiteOpenHelper {
     // To allow for changes in DB versioning and keeping user data
     private static final int DB_VERSION = 1;
 
-    static final String DB_NAME = "parts_runner.db";
+    static final String DB_NAME = "machines.db";
 
     public PartsRunnerDBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -38,15 +38,16 @@ public class PartsRunnerDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         final String SQL_CREATE_STUFF_TABLE = "CREATE TABLE " +
-                PartsRunnerContract.StuffEntry.TABLE_NAME + " (" +
-                PartsRunnerContract.StuffEntry._ID + " INTEGER PRIMARY KEY, " +
-                PartsRunnerContract.StuffEntry.C_EQUIP_TYPE + " TEXT NOT NULL, " +
-                PartsRunnerContract.StuffEntry.C_MANUFACTURER + " TEXT , " +
-                PartsRunnerContract.StuffEntry.C_MODEL_YEAR + " TEXT, " +
-                PartsRunnerContract.StuffEntry.C_MODEL + " TEXT, " +
-                PartsRunnerContract.StuffEntry.C_MODEL_NO + " TEXT, " +
-                PartsRunnerContract.StuffEntry.C_SERIAL_NO + " TEXT, " +
-                PartsRunnerContract.StuffEntry.C_NOTES + " TEXT );";
+                PartsRunnerContract.MachineEntry.TABLE_NAME + " (" +
+                PartsRunnerContract.MachineEntry._ID + " INTEGER PRIMARY KEY, " +
+                PartsRunnerContract.MachineEntry.C_MACHINE_TYPE + " TEXT NOT NULL, " +
+                PartsRunnerContract.MachineEntry.C_MANUFACTURER + " TEXT , " +
+                PartsRunnerContract.MachineEntry.C_MODEL_YEAR + " INTEGER, " +
+                PartsRunnerContract.MachineEntry.C_MODEL + " TEXT, " +
+                PartsRunnerContract.MachineEntry.C_MODEL_NO + " TEXT, " +
+                PartsRunnerContract.MachineEntry.C_SERIAL_NO + " TEXT, " +
+                PartsRunnerContract.MachineEntry.C_MACHINE_NUM + " INTEGER, " +
+                PartsRunnerContract.MachineEntry.C_NOTES + " TEXT );";
 
         sqLiteDatabase.execSQL(SQL_CREATE_STUFF_TABLE);
     }
@@ -59,7 +60,7 @@ public class PartsRunnerDBHelper extends SQLiteOpenHelper {
         // Note that this only fires if you change the version number for your database.
         // It does NOT depend on the version number for your application.
         // Currently the next line wipes out all user data and starts with a fresh DB Table
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PartsRunnerContract.StuffEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PartsRunnerContract.MachineEntry.TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
 }

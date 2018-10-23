@@ -4,7 +4,7 @@
             "outputFile": "/home/mike/proj/android/PartsRunner/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rTW/values-zh-rTW.xml",
             "map": [
                 {
-                    "source": "/home/mike/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/7ac9fdefd34508da5a0b2554f9623677/res/values-zh-rTW/values-zh-rTW.xml",
+                    "source": "/home/mike/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/3da052ea34a288a1c6a6ac00d7901303/res/values-zh-rTW/values-zh-rTW.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/home/mike/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/50a349bce099c767947c5692637fcb16/res/values-zh-rTW/values-zh-rTW.xml",
+                    "source": "/home/mike/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/b2b2a0906a07ec44538d31e8c7a9867e/res/values-zh-rTW/values-zh-rTW.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

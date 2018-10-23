@@ -29,15 +29,15 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.babarehner.android.partsrunner.data.PartsRunnerContract;
-import com.babarehner.android.partsrunner.data.PartsRunnerContract.StuffEntry;
+import com.babarehner.android.partsrunner.data.PartsRunnerContract.MachineEntry;
 
 import static android.provider.BaseColumns._ID;
 import static com.babarehner.android.partsrunner.data.PartsRunnerContract.PARTS_RUNNER_AUTHORITY;
 import static com.babarehner.android.partsrunner.data.PartsRunnerContract.PATH_TABLE_NAME;
-import static com.babarehner.android.partsrunner.data.PartsRunnerContract.StuffEntry.C_EQUIP_TYPE;
-import static com.babarehner.android.partsrunner.data.PartsRunnerContract.StuffEntry.STUFF_ITEM_TYPE;
-import static com.babarehner.android.partsrunner.data.PartsRunnerContract.StuffEntry.STUFF_LIST_TYPE;
-import static com.babarehner.android.partsrunner.data.PartsRunnerContract.StuffEntry.TABLE_NAME;
+import static com.babarehner.android.partsrunner.data.PartsRunnerContract.MachineEntry.C_MACHINE_TYPE;
+import static com.babarehner.android.partsrunner.data.PartsRunnerContract.MachineEntry.MACHINE_ITEM_TYPE;
+import static com.babarehner.android.partsrunner.data.PartsRunnerContract.MachineEntry.MACHINE_LIST_TYPE;
+import static com.babarehner.android.partsrunner.data.PartsRunnerContract.MachineEntry.TABLE_NAME;
 
  public class PartsRunnerProvider extends ContentProvider {
 
@@ -113,7 +113,7 @@ import static com.babarehner.android.partsrunner.data.PartsRunnerContract.StuffE
      // for that specific row in the database
      public Uri insertRecord(Uri uri, ContentValues values) {
          // Check the the practice type is not null
-         String prac_type = values.getAsString(C_EQUIP_TYPE);
+         String prac_type = values.getAsString(C_MACHINE_TYPE);
          if (prac_type == null) {
              throw new IllegalArgumentException("Equipment Type required to insert new Record");
          }
@@ -157,8 +157,8 @@ import static com.babarehner.android.partsrunner.data.PartsRunnerContract.StuffE
          }
 
          // check that the practice type is not empty
-         if (values.containsKey(C_EQUIP_TYPE)) {
-             String prac_name = values.getAsString(C_EQUIP_TYPE);
+         if (values.containsKey(C_MACHINE_TYPE)) {
+             String prac_name = values.getAsString(C_MACHINE_TYPE);
              // check again
              if (prac_name == null) {
                  throw new IllegalArgumentException("Exercise requires a practice type- in updateRecords");
@@ -198,9 +198,9 @@ import static com.babarehner.android.partsrunner.data.PartsRunnerContract.StuffE
          final int match = sUriMatcher.match(uri);
          switch (match) {
              case STUFF:
-                 return STUFF_LIST_TYPE;
+                 return MACHINE_LIST_TYPE;
              case STUFF_ID:
-                 return STUFF_ITEM_TYPE;
+                 return MACHINE_ITEM_TYPE;
              default:
                  throw new IllegalStateException("Unknown Uri: " + uri + "with match: " + match);
          }
