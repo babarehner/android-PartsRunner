@@ -882,9 +882,9 @@ id line1
 id line3
 id listMode
 id list_item
-id list_item_date
-id list_item_prac_len
-id list_item_prac_type
+id list_item_manufacturer
+id list_item_model
+id list_item_year
 id list_machines
 id masked
 id media_actions

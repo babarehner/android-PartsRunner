@@ -143,7 +143,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="true"
-                android:hint="number of item if more than one"
+                android:hint="which one if more than one"
                 android:textColor="@color/black"
                 android:inputType="number"/>
 

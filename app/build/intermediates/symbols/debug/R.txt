@@ -881,9 +881,9 @@ int id line1 0x7f080061
 int id line3 0x7f080062
 int id listMode 0x7f080063
 int id list_item 0x7f080064
-int id list_item_date 0x7f080065
-int id list_item_prac_len 0x7f080066
-int id list_item_prac_type 0x7f080067
+int id list_item_manufacturer 0x7f080065
+int id list_item_model 0x7f080066
+int id list_item_year 0x7f080067
 int id list_machines 0x7f080068
 int id masked 0x7f080069
 int id media_actions 0x7f08006a

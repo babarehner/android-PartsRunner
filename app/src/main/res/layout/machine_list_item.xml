@@ -12,7 +12,7 @@ android:paddingTop="16dp"
 android:paddingLeft="0dp">
 
     <TextView
-        android:id="@+id/list_item_date"
+        android:id="@+id/list_item_year"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="0dp"
@@ -20,7 +20,7 @@ android:paddingLeft="0dp">
         tools:text="12/12/18" />
 
     <TextView
-        android:id="@+id/list_item_prac_type"
+        android:id="@+id/list_item_manufacturer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/activity_margin"
@@ -29,7 +29,7 @@ android:paddingLeft="0dp">
         tools:text="Breathing" />
 
     <TextView
-        android:id="@+id/list_item_prac_len"
+        android:id="@+id/list_item_model"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="16dp"
