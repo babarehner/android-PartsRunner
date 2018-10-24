@@ -196,7 +196,7 @@ package com.babarehner.android.partsrunner;
          mEditTextItemNum.setText("");
          mEditTextNotes.setText("");
      }
-
+     /****
      // set up date picker
      public void getDate() {
 
@@ -447,5 +447,10 @@ package com.babarehner.android.partsrunner;
          // show dialog that there are unsaved changes
          showUnsavedChangesDialog(discardButtonClickListener);
      }
+
+
+     ****/
+
+
 
  }
