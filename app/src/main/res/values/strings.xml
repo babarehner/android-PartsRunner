@@ -19,4 +19,21 @@
     <string name="serial_num">Serial No:</string>
     <string name="item_num">Item No:</string>
 
+    <string name="share">Share</string>
+    <string name="action_save">Save</string>
+    <string name="action_delete">Delete this entry</string>
+    <string name="insert_machine_failed">Failed to save machine/item</string>
+    <string name="insert_machine_good">machine/item successfully served</string>
+    <string name="edit_update_machine_failed">failed to update machine/item</string>
+    <string name="edit_update_machine_success">update machine/item succeeded</string>
+    <string name="delete_machine_failure">failed to delete machine/item</string>
+    <string name="delete_machine_successful">delete machine/item succeeded</string>
+    <string name="delete_dialog_msg">Delete this record</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="unsaved_changes_dialog_msg">Discard changes and quit editing</string>
+    <string name="discard">Discard edit</string>
+    <string name="keep_editing">Keep editing</string>
+
+
 </resources>

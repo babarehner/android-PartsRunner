@@ -51,11 +51,11 @@ package com.babarehner.android.partsrunner;
 
  public class AddEditItemActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-     public static final int EXISTING_ADD_EDIT_ITEM_LOADER = 0;
+     public static final int EXISTING_ADD_EDIT_MACHINE_LOADER = 0;
 
      private final String LOG_TAG = AddEditItemActivity.class.getSimpleName();
 
-     private Uri mCurrentItemUri;
+     private Uri mCurrentMachineUri;
 
      private Spinner mSpinnerMachineType;
      private EditText mEditTextYear;
@@ -73,13 +73,13 @@ package com.babarehner.android.partsrunner;
 
      static final int DATE_DIALOG_ID = 99;
 
-     private boolean mItemChanged = false;   // When edit change made to an exercise row
+     private boolean mMachineChanged = false;   // When edit change made to an exercise row
 
      // Touch Listener to check if changes made to a book
      private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
          @Override
          public boolean onTouch(View v, MotionEvent event) {
-             mItemChanged = true;
+             mMachineChanged = true;
              return false;
          }
      };
@@ -91,11 +91,11 @@ package com.babarehner.android.partsrunner;
 
          //Get intent and get data from intent
          Intent intent = getIntent();
-         mCurrentItemUri = intent.getData();
+         mCurrentMachineUri = intent.getData();
          // String str = mCurrentItemUri.toString();
 
          // If the intent does not contain a single item-  Uri FAB clicked
-         if (mCurrentItemUri == null) {
+         if (mCurrentMachineUri == null) {
              // set page header to add exercise
              setTitle(getString(R.string.activity_add_edit_item_title_add_machine));
              // take out the delete menu
@@ -103,7 +103,8 @@ package com.babarehner.android.partsrunner;
          } else {
              // set page header to edit exercise
              setTitle(getString(R.string.activity_add_edit_item_title_edit_machine));
-             getLoaderManager().initLoader(EXISTING_ADD_EDIT_ITEM_LOADER, null, AddEditItemActivity.this);
+             getLoaderManager().initLoader(EXISTING_ADD_EDIT_MACHINE_LOADER, null,
+                     AddEditItemActivity.this);
          }
 
          // initialization required or it crashes
@@ -141,7 +142,8 @@ package com.babarehner.android.partsrunner;
                  PartsRunnerContract.MachineEntry.C_MACHINE_NUM,
                  PartsRunnerContract.MachineEntry.C_NOTES };
          // start a new thread
-         return new CursorLoader(this, mCurrentItemUri, projection, null, null, null);
+         return new CursorLoader(this, mCurrentMachineUri, projection, null,
+                 null, null);
      }
 
      @Override
@@ -179,7 +181,6 @@ package com.babarehner.android.partsrunner;
              mEditTextSerialNum.setText(serialNum);
              mEditTextItemNum.setText(machineNum);
              mEditTextNotes.setText(notes);
-
          }
      }
 
@@ -196,75 +197,19 @@ package com.babarehner.android.partsrunner;
          mEditTextItemNum.setText("");
          mEditTextNotes.setText("");
      }
-     /****
-     // set up date picker
-     public void getDate() {
 
-         tvDate = (TextView) findViewById(R.id.tvDate);
-         pickDate = (Button) findViewById(R.id.pick_date);
-
-         // add a click listener to the button
-         pickDate.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 // if on edit view and date button is clicked changed boolean in touch listener
-                 if (mCurrentItemUri != null) {
-                     mItemChanged = true;
-                 }
-                 showDialog(DATE_DIALOG_ID);
-             }
-         });
-
-         //get the current date
-         final Calendar c = Calendar.getInstance();
-         mYear = c.get(Calendar.YEAR);
-         mMonth = c.get(Calendar.MONTH);
-         mDay = c.get(Calendar.DAY_OF_MONTH);
-     }
-
-
-     //updates the date displayed in TextView
-     private void updateDate() {
-         tvDate.setText(
-                 new StringBuilder()
-                         .append((mMonth + 1)).append("/")
-                         .append(mDay).append("/")
-                         .append(mYear).append(" "));
-     }
-
-     // the callback received when the user sets the date in the dialog
-     private DatePickerDialog.OnDateSetListener DateSetListener =
-             new DatePickerDialog.OnDateSetListener() {
-                 @Override
-                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                     mYear = year;
-                     mMonth = month;
-                     mDay = dayOfMonth;
-                     updateDate();
-                 }
-             };
-
-     // Dialog needed to launch date picker called by showDialog()
-     @Override
-     protected Dialog onCreateDialog(int id){
-         if (id == DATE_DIALOG_ID) {
-             return new DatePickerDialog(this, DateSetListener, mYear, mMonth, mDay);
-         }
-         return null;
-     }
-
-     //TODO change save checkmart to white color
      @Override   // show the options menu
      public boolean onCreateOptionsMenu(Menu m) {
-         getMenuInflater().inflate(R.menu.menu_edit, m);
+         getMenuInflater().inflate(R.menu.menu_add_edit_item_activity, m);
          return true;
      }
+
 
      @Override   // hide delete menu item when adding a new exercise
      public boolean onPrepareOptionsMenu(Menu m) {
          super.onPrepareOptionsMenu(m);
          // if this is add an exercise, hide "delete" menu item
-         if (mCurrentItemUri == null) {
+         if (mCurrentMachineUri == null) {
              MenuItem menuItem = m.findItem(R.id.action_delete);
              menuItem.setVisible(false);
          }
@@ -277,7 +222,7 @@ package com.babarehner.android.partsrunner;
      public boolean onOptionsItemSelected(MenuItem item) {
          switch (item.getItemId()) {
              case R.id.action_save:
-                 saveExercise();
+                 saveMachine();
                  finish();       // exit activity
                  return true;
              case R.id.action_delete:
@@ -287,8 +232,8 @@ package com.babarehner.android.partsrunner;
              // this is the <- button on the header
              case android.R.id.home:
                  // book has not changed
-                 if (!mItemChanged) {
-                     NavUtils.navigateUpFromSameTask(StrengthExActivity.this);
+                 if (!mMachineChanged) {
+                     NavUtils.navigateUpFromSameTask(AddEditItemActivity.this);
                      return true;
                  }
                  // set up dialog to warn user about unsaved changes
@@ -297,7 +242,7 @@ package com.babarehner.android.partsrunner;
                              @Override
                              public void onClick(DialogInterface dialog, int i) {
                                  //user click discard. Navigate up to parent activity
-                                 NavUtils.navigateUpFromSameTask(StrengthExActivity.this);
+                                 NavUtils.navigateUpFromSameTask(AddEditItemActivity.this);
                              }
                          };
                  // show user they have unsaved changes
@@ -308,57 +253,52 @@ package com.babarehner.android.partsrunner;
      }
 
 
-     private void saveExercise() {
+     private void saveMachine() {
 
          // read from EditText input fields
-         String exNameString = mExNameEditText.getText().toString().trim();
-         String weightString = mWeightEditText.getText().toString().trim();
-         String repsString = mRepsEditText.getText().toString().trim();
-         String setsString = mSetsEditText.getText().toString().trim();
-         String notesString = mNotesEditText.getText().toString().trim();
-         String dateString = tvDate.getText().toString().trim();
+         // TODO get data from Spinner
+         // TODO get year data
+         String manufacturerString = mEditTextManufacturer.getText().toString().trim();
+         String modelString = mEditTextModel.getText().toString().trim();
+         String modelNumString = mEditTextModelNum.getText().toString().trim();
+         String serialNumString = mEditTextSerialNum.getText().toString().trim();
+         String machineNumString = mEditTextItemNum.toString().trim();
+         String notesString = mEditTextNotes.getText().toString().trim();
 
-
-         // if adding exercise and the name field is left blank do nothing
-         if (mCurrentItemUri == null && TextUtils.isEmpty(exNameString)) {
-             Toast.makeText(this, getString(R.string.missing_exercise_name),
-                     Toast.LENGTH_SHORT).show();
-             return;
-         }
 
          ContentValues values = new ContentValues();
-         values.put(ExerciseContract.ExerciseEntry.C_EX_NAME, exNameString);
-         values.put(ExerciseContract.ExerciseEntry.C_WEIGHT, weightString);
-         values.put(ExerciseContract.ExerciseEntry.C_REPS, repsString);
-         values.put(ExerciseContract.ExerciseEntry.C_SETS, setsString);
-         values.put(ExerciseContract.ExerciseEntry.C_NOTES, notesString);
-         values.put(ExerciseContract.ExerciseEntry.C_DATE, dateString);
+         values.put(PartsRunnerContract.MachineEntry.C_MANUFACTURER, manufacturerString);
+         values.put(PartsRunnerContract.MachineEntry.C_MODEL, modelString);
+         values.put(PartsRunnerContract.MachineEntry.C_MODEL_NUM, modelNumString);
+         values.put(PartsRunnerContract.MachineEntry.C_SERIAL_NUM, serialNumString);
+         values.put(PartsRunnerContract.MachineEntry.C_MACHINE_NUM, machineNumString);
+         values.put(PartsRunnerContract.MachineEntry.C_NOTES, notesString);
 
-         if (mCurrentItemUri == null) {
-             // a new exercise
+         if (mCurrentMachineUri == null) {
+             // a new machine
              // ***********
-             Log.v(LOG_TAG, "in saveRecord " + ExerciseContract.ExerciseEntry.STRENGTH_URI.toString() + "\n" + values);
+             Log.v(LOG_TAG, "in saveRecord " + PartsRunnerContract.MachineEntry.PARTS_RUNNER_URI.toString() + "\n" + values);
 
-             Uri newUri = getContentResolver().insert(ExerciseContract.ExerciseEntry.STRENGTH_URI, values);
+             Uri newUri = getContentResolver().insert(PartsRunnerContract.MachineEntry.PARTS_RUNNER_URI, values);
              // ************
 
              if (newUri == null) {
-                 Toast.makeText(this, getString(R.string.strengthex_insert_exercise_failed),
+                 Toast.makeText(this, getString(R.string.insert_machine_failed),
                          Toast.LENGTH_SHORT).show();
              } else {
-                 Toast.makeText(this, getString(R.string.strengthex_insert_exercise_good),
+                 Toast.makeText(this, getString(R.string.insert_machine_good),
                          Toast.LENGTH_SHORT).show();
              }
          } else {
              // existing book so update with content URI and pass in ContentValues
-             int rowsAffected = getContentResolver().update(mCurrentItemUri, values, null, null);
+             int rowsAffected = getContentResolver().update(mCurrentMachineUri, values, null, null);
              if (rowsAffected == 0) {
                  // TODO Check db- Text Not Null does not seem to be working or entering
                  // "" does not mean NOT Null- there must be an error message closer to the db!!!
-                 Toast.makeText(this, getString(R.string.edit_update_strengthex_failed),
+                 Toast.makeText(this, getString(R.string.edit_update_machine_failed),
                          Toast.LENGTH_SHORT).show();
              } else {
-                 Toast.makeText(this, getString(R.string.edit_update_strengthex_success),
+                 Toast.makeText(this, getString(R.string.edit_update_machine_success),
                          Toast.LENGTH_SHORT).show();
              }
 
@@ -368,13 +308,13 @@ package com.babarehner.android.partsrunner;
 
      // delete exercise from DB
      private void deleteExercise(){
-         if (mCurrentItemUri != null) {
-             int rowsDeleted = getContentResolver().delete(mCurrentItemUri, null, null);
+         if (mCurrentMachineUri != null) {
+             int rowsDeleted = getContentResolver().delete(mCurrentMachineUri, null, null);
              if (rowsDeleted == 0) {
-                 Toast.makeText(this, getString(R.string.delete_exercise_failure),
+                 Toast.makeText(this, getString(R.string.delete_machine_failure),
                          Toast.LENGTH_SHORT).show();
              } else {
-                 Toast.makeText(this, getString(R.string.delete_exercise_successful),
+                 Toast.makeText(this, getString(R.string.delete_machine_successful),
                          Toast.LENGTH_SHORT).show();
              }
          }
@@ -430,7 +370,7 @@ package com.babarehner.android.partsrunner;
      // discard click listener that closed current activity.
      @Override
      public void onBackPressed() {
-         if (!mItemChanged) {
+         if (!mMachineChanged) {
              super.onBackPressed();
              return;
          }
@@ -448,9 +388,64 @@ package com.babarehner.android.partsrunner;
          showUnsavedChangesDialog(discardButtonClickListener);
      }
 
+    /**
+      // set up date picker
+      public void getDate() {
 
-     ****/
+      tvDate = (TextView) findViewById(R.id.tvDate);
+      pickDate = (Button) findViewById(R.id.pick_date);
 
+      // add a click listener to the button
+      pickDate.setOnClickListener(new View.OnClickListener() {
+     @Override
+     public void onClick(View v) {
+     // if on edit view and date button is clicked changed boolean in touch listener
+     if (mCurrentItemUri != null) {
+     mItemChanged = true;
+     }
+     showDialog(DATE_DIALOG_ID);
+     }
+     });
+
+      //get the current date
+      final Calendar c = Calendar.getInstance();
+      mYear = c.get(Calendar.YEAR);
+      mMonth = c.get(Calendar.MONTH);
+      mDay = c.get(Calendar.DAY_OF_MONTH);
+      }
+
+
+      //updates the date displayed in TextView
+      private void updateDate() {
+      tvDate.setText(
+      new StringBuilder()
+      .append((mMonth + 1)).append("/")
+      .append(mDay).append("/")
+      .append(mYear).append(" "));
+      }
+
+      // the callback received when the user sets the date in the dialog
+      private DatePickerDialog.OnDateSetListener DateSetListener =
+      new DatePickerDialog.OnDateSetListener() {
+     @Override
+     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+     mYear = year;
+     mMonth = month;
+     mDay = dayOfMonth;
+     updateDate();
+     }
+     };
+
+      // Dialog needed to launch date picker called by showDialog()
+      @Override
+      protected Dialog onCreateDialog(int id){
+      if (id == DATE_DIALOG_ID) {
+      return new DatePickerDialog(this, DateSetListener, mYear, mMonth, mDay);
+      }
+      return null;
+      }
+     
+      ***/
 
 
  }
