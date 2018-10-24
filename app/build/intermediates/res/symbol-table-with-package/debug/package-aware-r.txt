@@ -589,6 +589,7 @@ dimen abc_text_size_subhead_material
 dimen abc_text_size_subtitle_material_toolbar
 dimen abc_text_size_title_material
 dimen abc_text_size_title_material_toolbar
+dimen activity_margin
 dimen compat_button_inset_horizontal_material
 dimen compat_button_inset_vertical_material
 dimen compat_button_padding_horizontal_material
@@ -663,6 +664,7 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+dimen small_activity_margin
 dimen tooltip_corner_radius
 dimen tooltip_horizontal_padding
 dimen tooltip_margin
@@ -806,6 +808,7 @@ id action_settings
 id action_text
 id actions
 id activity_chooser_view_content
+id activity_main
 id add
 id alertTitle
 id all
@@ -841,6 +844,8 @@ id design_menu_item_text
 id design_navigation_view
 id disableHome
 id edit_query
+id empty_subtitle_text
+id empty_view
 id end
 id end_padder
 id enterAlways
@@ -877,6 +882,10 @@ id line1
 id line3
 id listMode
 id list_item
+id list_item_date
+id list_item_prac_len
+id list_item_prac_type
+id list_machines
 id masked
 id media_actions
 id message
@@ -957,7 +966,6 @@ id time
 id title
 id titleDividerNoCustom
 id title_template
-id toolbar
 id top
 id topPanel
 id touch_outside
@@ -1018,7 +1026,6 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_add_edit_item
 layout activity_main
-layout content_main
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -1033,6 +1040,7 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
+layout machine_list_item
 layout notification_action
 layout notification_action_tombstone
 layout notification_media_action
@@ -1091,6 +1099,8 @@ string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
 string character_counter_pattern
+string empty_view_subtitle_text
+string empty_view_title_text
 string item_num
 string machine_type
 string manufacturer

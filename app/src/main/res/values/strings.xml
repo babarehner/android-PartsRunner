@@ -2,6 +2,11 @@
     <string name="app_name">Parts Runner</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Title text for the empty view [CHAR LIMIT=50] -->
+    <string name="empty_view_title_text">OH NO Mr. Bill I\'m a lazy Lima Bean who has not entered anything in the Machines\' sheets.</string>
+    <!-- Subtitle text for the empty view that prompts the user to add a machine/item [CHAR LIMIT=50] -->
+    <string name="empty_view_subtitle_text">Please get started adding some vehicles/machines/items by clicking on the button below.</string>
+
     <string name="activity_add_edit_item_title_add_machine">Add Item</string>
     <string name="activity_add_edit_item_title_edit_machine">Add Item</string>
 

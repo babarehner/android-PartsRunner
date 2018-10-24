@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:minHeight="?android:attr/listPreferredItemHeight"
+android:orientation="horizontal"
+android:gravity="center_horizontal"
+android:paddingTop="16dp"
+android:paddingLeft="0dp">
+
+    <TextView
+        android:id="@+id/list_item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="0dp"
+        android:textStyle="bold"
+        tools:text="12/12/18" />
+
+    <TextView
+        android:id="@+id/list_item_prac_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_margin"
+        android:layout_weight="2"
+        android:textStyle="bold"
+        tools:text="Breathing" />
+
+    <TextView
+        android:id="@+id/list_item_prac_len"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:textStyle="bold"
+        android:gravity="end"
+        tools:text="23"/>
+
+</LinearLayout>
