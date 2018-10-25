@@ -9,19 +9,18 @@ android:minHeight="?android:attr/listPreferredItemHeight"
 android:orientation="horizontal"
 android:gravity="center_horizontal"
 android:paddingTop="16dp"
-android:paddingLeft="0dp">
+android:paddingLeft="@dimen/activity_small_margin">
 
     <TextView
         android:id="@+id/list_item_year"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="0dp"
-        android:textStyle="bold"
-        tools:text="12/12/18" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/list_item_manufacturer"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/activity_margin"
         android:layout_weight="2"
@@ -32,7 +31,7 @@ android:paddingLeft="0dp">
         android:id="@+id/list_item_model"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
+        android:paddingLeft="@dimen/activity_margin"
         android:textStyle="bold"
         android:gravity="end"
         tools:text="23"/>

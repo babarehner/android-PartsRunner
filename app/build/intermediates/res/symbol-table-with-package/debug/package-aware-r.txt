@@ -590,6 +590,7 @@ dimen abc_text_size_subtitle_material_toolbar
 dimen abc_text_size_title_material
 dimen abc_text_size_title_material_toolbar
 dimen activity_margin
+dimen activity_small_margin
 dimen compat_button_inset_horizontal_material
 dimen compat_button_inset_vertical_material
 dimen compat_button_padding_horizontal_material
@@ -664,7 +665,6 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
-dimen small_activity_margin
 dimen tooltip_corner_radius
 dimen tooltip_horizontal_padding
 dimen tooltip_margin
@@ -858,9 +858,9 @@ id et_item_num
 id et_manufacturer
 id et_model
 id et_model_num
+id et_model_year
 id et_notes
 id et_serial_num
-id et_year
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu

@@ -66,6 +66,7 @@ package com.babarehner.android.partsrunner;
      private EditText mEditTextSerialNum;
      private EditText mEditTextItemNum;
      private EditText mEditTextNotes;
+     private Button mButtonModelYear;
 
 
      private TextView mTextViewYear;
@@ -113,6 +114,8 @@ package com.babarehner.android.partsrunner;
          // Find all input views to read from
          //mSpinnerMachineType = findViewById(R.id.sp_machine_type);
          mEditTextManufacturer = (EditText) findViewById(R.id.et_manufacturer);
+         mEditTextYear = (EditText) findViewById(R.id.et_model_year);
+         mButtonModelYear = (Button) findViewById(R.id.pick_year);
          mEditTextModel = (EditText) findViewById(R.id.et_model);
          mEditTextModelNum = (EditText) findViewById(R.id.et_model_num);
          mEditTextSerialNum = (EditText) findViewById(R.id.et_serial_num);
@@ -122,6 +125,7 @@ package com.babarehner.android.partsrunner;
          // Set up Touch Listener on all input fields to see if a field has been modified
          //mSpinnerMachineType.setOnTouchListener(mTouchListener);
          mEditTextManufacturer.setOnTouchListener(mTouchListener);
+         mButtonModelYear.setOnTouchListener(mTouchListener);
          mEditTextModel.setOnTouchListener(mTouchListener);
          mEditTextModelNum.setOnTouchListener(mTouchListener);
          mEditTextSerialNum.setOnTouchListener(mTouchListener);
@@ -165,7 +169,7 @@ package com.babarehner.android.partsrunner;
 
              // use index to pull data out of the cursor
              String machineType = c.getString(machineTypeColIndex);
-             int modelYear = c.getInt(modelYearColIndex);
+             String modelYear = c.getString(modelYearColIndex);
              String manufacturer = c.getString(manufacturerColIndex);
              String model = c.getString(modelColIndex);
              String modelNum = c.getString(modelNumColIndex);
@@ -263,6 +267,7 @@ package com.babarehner.android.partsrunner;
          // TODO get data from Spinner
          // TODO get year data
          String manufacturerString = mEditTextManufacturer.getText().toString().trim();
+         String modelYearString = mEditTextYear.getText().toString().trim();
          String modelString = mEditTextModel.getText().toString().trim();
          String modelNumString = mEditTextModelNum.getText().toString().trim();
          String serialNumString = mEditTextSerialNum.getText().toString().trim();
@@ -272,6 +277,7 @@ package com.babarehner.android.partsrunner;
 
          ContentValues values = new ContentValues();
          values.put(PartsRunnerContract.MachineEntry.C_MANUFACTURER, manufacturerString);
+         values.put(PartsRunnerContract.MachineEntry.C_MODEL_YEAR, modelYearString);
          values.put(PartsRunnerContract.MachineEntry.C_MODEL, modelString);
          values.put(PartsRunnerContract.MachineEntry.C_MODEL_NUM, modelNumString);
          values.put(PartsRunnerContract.MachineEntry.C_SERIAL_NUM, serialNumString);
@@ -396,67 +402,5 @@ package com.babarehner.android.partsrunner;
          DialogFragment yearFragment = new DatePickerFragment();
          yearFragment.show(getSupportFragmentManager(), "datePicker");
      }
-
-    /**
-      // set up date picker
-      public void getDate() {
-
-      tvDate = (TextView) findViewById(R.id.tvDate);
-      pickDate = (Button) findViewById(R.id.pick_date);
-
-      // add a click listener to the button
-      pickDate.setOnClickListener(new View.OnClickListener() {
-     @Override
-     public void onClick(View v) {
-     // if on edit view and date button is clicked changed boolean in touch listener
-     if (mCurrentItemUri != null) {
-     mItemChanged = true;
-     }
-     showDialog(DATE_DIALOG_ID);
-     }
-     });
-
-      //get the current date
-      final Calendar c = Calendar.getInstance();
-      mYear = c.get(Calendar.YEAR);
-      mMonth = c.get(Calendar.MONTH);
-      mDay = c.get(Calendar.DAY_OF_MONTH);
-      }
-
-
-      //updates the date displayed in TextView
-      private void updateDate() {
-      tvDate.setText(
-      new StringBuilder()
-      .append((mMonth + 1)).append("/")
-      .append(mDay).append("/")
-      .append(mYear).append(" "));
-      }
-
-      // the callback received when the user sets the date in the dialog
-      private DatePickerDialog.OnDateSetListener DateSetListener =
-      new DatePickerDialog.OnDateSetListener() {
-     @Override
-     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-     mYear = year;
-     mMonth = month;
-     mDay = dayOfMonth;
-     updateDate();
-     }
-     };
-
-      // Dialog needed to launch date picker called by showDialog()
-      @Override
-      protected Dialog onCreateDialog(int id){
-      if (id == DATE_DIALOG_ID) {
-      return new DatePickerDialog(this, DateSetListener, mYear, mMonth, mDay);
-      }
-      return null;
-      }
-
-      ***/
-
-
-
 
  }

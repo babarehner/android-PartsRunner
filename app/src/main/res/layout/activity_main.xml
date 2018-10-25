@@ -5,7 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/small_activity_margin"
+    android:padding="@dimen/activity_small_margin"
     tools:context="com.babarehner.android.partsrunner.AddEditItemActivity">
 
     <ListView
