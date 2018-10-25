@@ -33,16 +33,22 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+
+
             <Button
                 android:id="@+id/pick_year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/year"/>
+                android:text="@string/year"
+                android:onClick="showDatePickerDialog"/>
+
+
 
             <EditText
                 android:id="@+id/et_year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/pick_year"
                 android:enabled="false"
                 android:textColor="@color/black"/>
 

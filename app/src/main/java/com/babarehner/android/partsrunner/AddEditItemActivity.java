@@ -28,6 +28,7 @@ package com.babarehner.android.partsrunner;
  import android.database.Cursor;
  import android.net.Uri;
  import android.os.Bundle;
+ import android.support.v4.app.DialogFragment;
  import android.support.v4.app.NavUtils;
  import android.support.v7.app.AlertDialog;
  import android.support.v7.app.AppCompatActivity;
@@ -391,6 +392,11 @@ package com.babarehner.android.partsrunner;
          showUnsavedChangesDialog(discardButtonClickListener);
      }
 
+     public void showDatePickerDialog(View v){
+         DialogFragment yearFragment = new DatePickerFragment();
+         yearFragment.show(getSupportFragmentManager(), "datePicker");
+     }
+
     /**
       // set up date picker
       public void getDate() {
@@ -449,6 +455,8 @@ package com.babarehner.android.partsrunner;
       }
 
       ***/
+
+
 
 
  }
