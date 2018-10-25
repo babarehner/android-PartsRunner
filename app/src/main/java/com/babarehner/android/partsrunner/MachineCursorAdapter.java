@@ -34,7 +34,7 @@ public class MachineCursorAdapter extends CursorAdapter {
 
         String modelYear = c.getString(yearColIndex);
         String manufacturer = c.getString(manufacturerColIndex);
-        String model = c.getString(manufacturerColIndex);
+        String model = c.getString(modelColIndex);
 
         yearTextView.setText(modelYear);
         manufacturerTextView.setText(manufacturer);

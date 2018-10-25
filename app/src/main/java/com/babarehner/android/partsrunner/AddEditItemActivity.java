@@ -108,9 +108,9 @@ package com.babarehner.android.partsrunner;
          }
 
          // initialization required or it crashes
-         mTextViewYear = (TextView) findViewById(R.id.et_year);
+         //mTextViewYear = (TextView) findViewById(R.id.et_year);
          // Find all input views to read from
-         mSpinnerMachineType = findViewById(R.id.sp_machine_type);
+         //mSpinnerMachineType = findViewById(R.id.sp_machine_type);
          mEditTextManufacturer = (EditText) findViewById(R.id.et_manufacturer);
          mEditTextModel = (EditText) findViewById(R.id.et_model);
          mEditTextModelNum = (EditText) findViewById(R.id.et_model_num);
@@ -119,15 +119,18 @@ package com.babarehner.android.partsrunner;
          mEditTextNotes = findViewById(R.id.et_notes);
 
          // Set up Touch Listener on all input fields to see if a field has been modified
-         mSpinnerMachineType.setOnTouchListener(mTouchListener);
+         //mSpinnerMachineType.setOnTouchListener(mTouchListener);
          mEditTextManufacturer.setOnTouchListener(mTouchListener);
          mEditTextModel.setOnTouchListener(mTouchListener);
          mEditTextModelNum.setOnTouchListener(mTouchListener);
          mEditTextSerialNum.setOnTouchListener(mTouchListener);
+         mEditTextItemNum.setOnTouchListener(mTouchListener);
          mEditTextNotes.setOnTouchListener(mTouchListener);
 
-         // getYear();
+         //getYear();
      }
+
+
 
 
      @Override
@@ -444,7 +447,7 @@ package com.babarehner.android.partsrunner;
       }
       return null;
       }
-     
+
       ***/
 
 

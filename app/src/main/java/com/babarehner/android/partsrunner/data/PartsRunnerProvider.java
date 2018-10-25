@@ -43,16 +43,16 @@ import static com.babarehner.android.partsrunner.data.PartsRunnerContract.Machin
 
      public static final String LOG_TAG = PartsRunnerProvider.class.getSimpleName();
 
-     private static final int STUFF = 100;
-     private static final int STUFF_ID = 101;
+     private static final int MACHINES = 100;
+     private static final int MACHINE_ID = 101;
 
      private PartsRunnerDBHelper mDBHelper;
 
      private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
      static {
-         sUriMatcher.addURI(PARTS_RUNNER_AUTHORITY, PATH_TABLE_NAME, STUFF);
-         sUriMatcher.addURI(PARTS_RUNNER_AUTHORITY, PATH_TABLE_NAME + "/#", STUFF_ID);
+         sUriMatcher.addURI(PARTS_RUNNER_AUTHORITY, PATH_TABLE_NAME, MACHINES);
+         sUriMatcher.addURI(PARTS_RUNNER_AUTHORITY, PATH_TABLE_NAME + "/#", MACHINE_ID);
      }
 
 
@@ -74,11 +74,11 @@ import static com.babarehner.android.partsrunner.data.PartsRunnerContract.Machin
 
          int match = sUriMatcher.match(uri);
          switch (match) {
-             case STUFF:
+             case MACHINES:
                  c = db.query(TABLE_NAME, projection, selection, selectionArgs, null,
                          null, sortOrder);
                  break;
-             case STUFF_ID:
+             case MACHINE_ID:
                  selection = _ID + "=?";
                  selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
                  c = db.query(TABLE_NAME, projection, selection, selectionArgs,
@@ -101,7 +101,7 @@ import static com.babarehner.android.partsrunner.data.PartsRunnerContract.Machin
      public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
          final int match = sUriMatcher.match((uri));
          switch (match) {
-             case STUFF:
+             case MACHINES:
                  return insertRecord(uri, values);
              default:
                  throw new IllegalArgumentException("Insertion is not supported for: " + uri);
@@ -114,10 +114,6 @@ import static com.babarehner.android.partsrunner.data.PartsRunnerContract.Machin
      public Uri insertRecord(Uri uri, ContentValues values) {
          // Check the the practice type is not null
          String prac_type = values.getAsString(C_MACHINE_TYPE);
-         if (prac_type == null) {
-             throw new IllegalArgumentException("Equipment Type required to insert new Record");
-         }
-
 
          SQLiteDatabase db = mDBHelper.getWritableDatabase();
          long id = db.insert(TABLE_NAME, null, values);
@@ -138,9 +134,9 @@ import static com.babarehner.android.partsrunner.data.PartsRunnerContract.Machin
      public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
          final int match = sUriMatcher.match(uri);
          switch (match) {
-             case STUFF:
+             case MACHINES:
                  return updateRecords(uri, values, selection, selectionArgs);
-             case STUFF_ID:
+             case MACHINE_ID:
                  selection = _ID + "=?";
                  selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
                  return updateRecords(uri, values, selection, selectionArgs);
@@ -154,15 +150,6 @@ import static com.babarehner.android.partsrunner.data.PartsRunnerContract.Machin
          // if there are no values quit
          if (values.size() == 0) {
              return 0;
-         }
-
-         // check that the practice type is not empty
-         if (values.containsKey(C_MACHINE_TYPE)) {
-             String prac_name = values.getAsString(C_MACHINE_TYPE);
-             // check again
-             if (prac_name == null) {
-                 throw new IllegalArgumentException("Exercise requires a practice type- in updateRecords");
-             }
          }
 
          SQLiteDatabase db = mDBHelper.getWritableDatabase();
@@ -197,9 +184,9 @@ import static com.babarehner.android.partsrunner.data.PartsRunnerContract.Machin
      public String getType(@NonNull Uri uri) {
          final int match = sUriMatcher.match(uri);
          switch (match) {
-             case STUFF:
+             case MACHINES:
                  return MACHINE_LIST_TYPE;
-             case STUFF_ID:
+             case MACHINE_ID:
                  return MACHINE_ITEM_TYPE;
              default:
                  throw new IllegalStateException("Unknown Uri: " + uri + "with match: " + match);

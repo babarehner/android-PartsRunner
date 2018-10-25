@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:padding="@dimen/activity_margin"
         android:orientation="vertical">
 
         <LinearLayout
@@ -60,7 +60,7 @@
 
             <EditText
                 android:id="@+id/et_manufacturer"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="true"
                 android:textColor="@color/black"
@@ -80,7 +80,7 @@
 
             <EditText
                 android:id="@+id/et_model"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="true"
                 android:textColor="@color/black"
@@ -100,7 +100,7 @@
 
             <EditText
                 android:id="@+id/et_model_num"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="true"
                 android:textColor="@color/black"/>
@@ -121,7 +121,7 @@
 
             <EditText
                 android:id="@+id/et_serial_num"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="true"
                 android:textColor="@color/black"/>
@@ -140,7 +140,7 @@
 
             <EditText
                 android:id="@+id/et_item_num"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="true"
                 android:hint="which one if more than one"
