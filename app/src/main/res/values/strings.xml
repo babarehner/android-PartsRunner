@@ -34,6 +34,9 @@
     <string name="unsaved_changes_dialog_msg">Discard changes and quit editing</string>
     <string name="discard">Discard edit</string>
     <string name="keep_editing">Keep editing</string>
+    <string name="not_needed_cars">Usually not needed for vehicles</string>
+    <string name="which_one">Which number if more than one</string>
+    <string name="notes">Put notes here</string>
 
 
 </resources>

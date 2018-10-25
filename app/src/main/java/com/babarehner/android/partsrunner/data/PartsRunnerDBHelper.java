@@ -37,8 +37,8 @@ public class PartsRunnerDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        final String SQL_CREATE_STUFF_TABLE = "CREATE TABLE " +
-                PartsRunnerContract.MachineEntry.TABLE_NAME + " (" +
+        final String SQL_CREATE_MACHINES_TABLE = "CREATE TABLE " +
+                PartsRunnerContract.MachineEntry.MACHINE_TABLE_NAME + " (" +
                 PartsRunnerContract.MachineEntry._ID + " INTEGER PRIMARY KEY, " +
                 PartsRunnerContract.MachineEntry.C_MACHINE_TYPE + " TEXT, " +
                 PartsRunnerContract.MachineEntry.C_MANUFACTURER + " TEXT , " +
@@ -49,7 +49,13 @@ public class PartsRunnerDBHelper extends SQLiteOpenHelper {
                 PartsRunnerContract.MachineEntry.C_MACHINE_NUM + " INTEGER, " +
                 PartsRunnerContract.MachineEntry.C_NOTES + " TEXT );";
 
-        sqLiteDatabase.execSQL(SQL_CREATE_STUFF_TABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_MACHINES_TABLE);
+
+        final String SQL_CREATE_EQUIPMENT_TYPE_TABLE = "CREATE TABLE " +
+                PartsRunnerContract.EquipmentType.EQUPMENT_TABLE_NAME + " (" +
+                PartsRunnerContract.EquipmentType.C_EQUIPMENT_TYPE + " TEXT );";
+
+        sqLiteDatabase.execSQL(SQL_CREATE_EQUIPMENT_TYPE_TABLE);
     }
 
 
@@ -60,7 +66,7 @@ public class PartsRunnerDBHelper extends SQLiteOpenHelper {
         // Note that this only fires if you change the version number for your database.
         // It does NOT depend on the version number for your application.
         // Currently the next line wipes out all user data and starts with a fresh DB Table
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PartsRunnerContract.MachineEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PartsRunnerContract.MachineEntry.MACHINE_TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
 }

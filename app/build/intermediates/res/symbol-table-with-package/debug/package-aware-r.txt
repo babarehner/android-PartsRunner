@@ -1124,6 +1124,8 @@ string machine_type
 string manufacturer
 string model
 string model_num
+string not_needed_cars
+string notes
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
@@ -1134,6 +1136,7 @@ string serial_num
 string share
 string status_bar_notification_info_overflow
 string unsaved_changes_dialog_msg
+string which_one
 string year
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
