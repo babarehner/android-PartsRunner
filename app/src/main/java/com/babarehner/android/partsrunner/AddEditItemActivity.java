@@ -38,6 +38,7 @@ package com.babarehner.android.partsrunner;
  import android.view.MenuItem;
  import android.view.MotionEvent;
  import android.view.View;
+ import android.widget.AdapterView;
  import android.widget.ArrayAdapter;
  import android.widget.Button;
  import android.widget.DatePicker;
@@ -47,12 +48,16 @@ package com.babarehner.android.partsrunner;
  import android.widget.Toast;
 
  import com.babarehner.android.partsrunner.data.PartsRunnerContract;
+ import com.babarehner.android.partsrunner.data.PartsRunnerDBHelper;
 
  import java.util.Calendar;
+ import java.util.List;
 
  public class AddEditItemActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
      public static final int EXISTING_ADD_EDIT_MACHINE_LOADER = 0;
+
+     public static CharSequence[] EQUIP_TYPES;
 
      private final String LOG_TAG = AddEditItemActivity.class.getSimpleName();
 
@@ -72,6 +77,8 @@ package com.babarehner.android.partsrunner;
      private TextView mTextViewYear;
      private Button mButtonPickYear;
      private int mYear;
+
+     private String[] mSpinVal = {"", "", "", ""};
 
      static final int DATE_DIALOG_ID = 99;
 
@@ -112,7 +119,7 @@ package com.babarehner.android.partsrunner;
          // initialization required or it crashes
          //mTextViewYear = (TextView) findViewById(R.id.et_year);
          // Find all input views to read from
-         //mSpinnerMachineType = findViewById(R.id.sp_machine_type);
+         mSpinnerMachineType = findViewById(R.id.sp_machine_type);
          mEditTextManufacturer = (EditText) findViewById(R.id.et_manufacturer);
          mEditTextYear = (EditText) findViewById(R.id.et_model_year);
          mButtonModelYear = (Button) findViewById(R.id.pick_year);
@@ -122,8 +129,14 @@ package com.babarehner.android.partsrunner;
          mEditTextItemNum = (EditText) findViewById(R.id.et_item_num);
          mEditTextNotes = findViewById(R.id.et_notes);
 
+         PartsRunnerDBHelper db = new PartsRunnerDBHelper(getApplicationContext());
+         List<String> machineTypeList = db.getEquipmentTypes();
+         EQUIP_TYPES = machineTypeList.toArray(new CharSequence[machineTypeList.size()]);
+
+         mSpinnerMachineType = getSpinnerVal(R.id.sp_machine_type, EQUIP_TYPES, 2);
+
          // Set up Touch Listener on all input fields to see if a field has been modified
-         //mSpinnerMachineType.setOnTouchListener(mTouchListener);
+         mSpinnerMachineType.setOnTouchListener(mTouchListener);
          mEditTextManufacturer.setOnTouchListener(mTouchListener);
          mButtonModelYear.setOnTouchListener(mTouchListener);
          mEditTextModel.setOnTouchListener(mTouchListener);
@@ -174,8 +187,9 @@ package com.babarehner.android.partsrunner;
              String model = c.getString(modelColIndex);
              String modelNum = c.getString(modelNumColIndex);
              String serialNum = c.getString(serialNumColIndex);
-             int machineNum = c.getInt(machineNumColIndex);
+             String machineNum = c.getString(machineNumColIndex);
              String notes = c.getString(notesColIndex);
+
 
              // deal with the spinner view
              ArrayAdapter arrayMachineType = (ArrayAdapter) mSpinnerMachineType.getAdapter();
@@ -260,22 +274,47 @@ package com.babarehner.android.partsrunner;
          return super.onOptionsItemSelected(item);
      }
 
+     // set up the spinners passing the a resource ID, an array of values, i not used currently
+     private Spinner getSpinnerVal(int resourceID, final CharSequence[] a, final int i) {
+         Log.v("AddEditItemActivity", Integer.toString(resourceID));
+         Spinner s = (Spinner)  findViewById(resourceID);
+         ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(this,
+                 android.R.layout.simple_spinner_item, a);
+         // Specify the layout to use when the list of choices appear
+         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+         s.setAdapter(adapter); // apply the adapter to the spinner
+         s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+             @Override
+             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                 String selection = (String) parent.getItemAtPosition(position);
+                 Log.v("AddEditItemActivity", selection);
+                 mSpinVal[i] = selection;
+             }
+             @Override
+             public void onNothingSelected(AdapterView<?> parent) {
+                 mSpinVal[0] = a[0].toString();
+             }
+         });
+         return s;
+     }
+
 
      private void saveMachine() {
 
          // read from EditText input fields
          // TODO get data from Spinner
-         // TODO get year data
+         String equipmentType = mSpinVal[2];
          String manufacturerString = mEditTextManufacturer.getText().toString().trim();
          String modelYearString = mEditTextYear.getText().toString().trim();
          String modelString = mEditTextModel.getText().toString().trim();
          String modelNumString = mEditTextModelNum.getText().toString().trim();
          String serialNumString = mEditTextSerialNum.getText().toString().trim();
-         String machineNumString = mEditTextItemNum.toString().trim();
+         String machineNumString = mEditTextItemNum.getText().toString().trim();
          String notesString = mEditTextNotes.getText().toString().trim();
 
 
          ContentValues values = new ContentValues();
+         values.put(PartsRunnerContract.MachineEntry.C_MACHINE_TYPE, equipmentType);
          values.put(PartsRunnerContract.MachineEntry.C_MANUFACTURER, manufacturerString);
          values.put(PartsRunnerContract.MachineEntry.C_MODEL_YEAR, modelYearString);
          values.put(PartsRunnerContract.MachineEntry.C_MODEL, modelString);

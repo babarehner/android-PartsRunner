@@ -151,8 +151,8 @@
                 android:layout_height="wrap_content"
                 android:enabled="true"
                 android:hint="@string/which_one"
-                android:textColor="@color/black"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:textColor="@color/black" />
 
         </LinearLayout>
 
