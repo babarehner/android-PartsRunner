@@ -76,12 +76,21 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_edit_equip_types) {
+            Intent intent = new Intent(MainActivity.this, EquipmentTypeActivity.class);
+            startActivity(intent);
         }
-
         return super.onOptionsItemSelected(item);
     }
+
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu m) {
+        super.onPrepareOptionsMenu(m);
+        // hide menu items with menu item.setVisible(false)
+        return true;
+    }
+
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args){

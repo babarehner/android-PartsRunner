@@ -10,13 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -28,6 +24,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".AddEditItemActivity" />
+        </activity>
+
+        <activity
+            android:name=".EquipmentTypeActivity"
+            android:parentActivityName=".MainActivity">
+            <!-- Parent activity metadata to support Android 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EquipmentTypeActivity" />
         </activity>
 
         <provider
