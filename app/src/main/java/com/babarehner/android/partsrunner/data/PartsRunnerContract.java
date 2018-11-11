@@ -76,10 +76,10 @@ public class PartsRunnerContract {
         public static final String EQUIPMENT_TYPE_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
                 + "/" + PARTS_RUNNER_AUTHORITY + "/" + PATH_EQUIPMENT_TYPES_TABLE_NAME;
         // Content URI to access the table data in the provider
-        public static final Uri PARTS_RUNNER_URI = Uri.withAppendedPath(BASE_CONTENT_URI,
+        public static final Uri EQUIP_TYPE_URI = Uri.withAppendedPath(BASE_CONTENT_URI,
                 PATH_EQUIPMENT_TYPES_TABLE_NAME);
 
-        public static final String EQUPMENT_TABLE_NAME = "TEquipmentTypes";
+        public static final String EQUIPMENT_TABLE_NAME = "TEquipmentTypes";
 
         // the globals and the columns
         public static final String _IDT = BaseColumns._ID;

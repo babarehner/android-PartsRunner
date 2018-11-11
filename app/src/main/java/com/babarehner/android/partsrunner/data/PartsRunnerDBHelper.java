@@ -56,7 +56,7 @@ public class PartsRunnerDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_MACHINES_TABLE);
 
         final String SQL_CREATE_EQUIPMENT_TYPE_TABLE = "CREATE TABLE " +
-                PartsRunnerContract.EquipmentType.EQUPMENT_TABLE_NAME + " (" +
+                PartsRunnerContract.EquipmentType.EQUIPMENT_TABLE_NAME + " (" +
                 PartsRunnerContract.EquipmentType._IDT + " INTEGER PRIMARY KEY, " +
                 PartsRunnerContract.EquipmentType.C_EQUIPMENT_TYPE + " TEXT );";
 
@@ -66,7 +66,7 @@ public class PartsRunnerDBHelper extends SQLiteOpenHelper {
         String[] equipmentTypes = { "Computers", "Refrigerators", "Vehicles" };
 
         for (String each : equipmentTypes){
-            sqLiteDatabase.execSQL("INSERT INTO " + PartsRunnerContract.EquipmentType.EQUPMENT_TABLE_NAME
+            sqLiteDatabase.execSQL("INSERT INTO " + PartsRunnerContract.EquipmentType.EQUIPMENT_TABLE_NAME
                     + " ( " + PartsRunnerContract.EquipmentType.C_EQUIPMENT_TYPE + " ) "
                     + " VALUES( "
                     + "'" + each + "'"  + ");");
@@ -77,7 +77,7 @@ public class PartsRunnerDBHelper extends SQLiteOpenHelper {
     // TODO rawQuery not using asynctask or LOADER- should be updated later.
     public List<String> getEquipmentTypes(){
         List<String> equipmentTypes = new ArrayList<>();
-        String fEquipmentTypeQuery = "SELECT * FROM " + PartsRunnerContract.EquipmentType.EQUPMENT_TABLE_NAME +
+        String fEquipmentTypeQuery = "SELECT * FROM " + PartsRunnerContract.EquipmentType.EQUIPMENT_TABLE_NAME +
                 " ORDER BY " + PartsRunnerContract.EquipmentType.C_EQUIPMENT_TYPE + ";" ;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(fEquipmentTypeQuery, null);
@@ -101,7 +101,7 @@ public class PartsRunnerDBHelper extends SQLiteOpenHelper {
         // It does NOT depend on the version number for your application.
         // Currently the next line wipes out all user data and starts with a fresh DB Table
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PartsRunnerContract.MachineEntry.MACHINE_TABLE_NAME);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PartsRunnerContract.EquipmentType.EQUPMENT_TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PartsRunnerContract.EquipmentType.EQUIPMENT_TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
 

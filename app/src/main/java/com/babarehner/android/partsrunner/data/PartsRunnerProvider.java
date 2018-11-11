@@ -32,6 +32,12 @@ import com.babarehner.android.partsrunner.data.PartsRunnerContract;
 import com.babarehner.android.partsrunner.data.PartsRunnerContract.MachineEntry;
 
 import static android.provider.BaseColumns._ID;
+import static com.babarehner.android.partsrunner.data.PartsRunnerContract.EquipmentType.C_EQUIPMENT_TYPE;
+import static com.babarehner.android.partsrunner.data.PartsRunnerContract.EquipmentType.EQUIPMENT_TABLE_NAME;
+import static com.babarehner.android.partsrunner.data.PartsRunnerContract.EquipmentType.EQUIPMENT_TYPE_ITEM_TYPE;
+import static com.babarehner.android.partsrunner.data.PartsRunnerContract.EquipmentType.EQUIPMENT_TYPE_LIST_TYPE;
+import static com.babarehner.android.partsrunner.data.PartsRunnerContract.EquipmentType._IDT;
+import static com.babarehner.android.partsrunner.data.PartsRunnerContract.MachineEntry._IDM;
 import static com.babarehner.android.partsrunner.data.PartsRunnerContract.PARTS_RUNNER_AUTHORITY;
 import static com.babarehner.android.partsrunner.data.PartsRunnerContract.PATH_EQUIPMENT_TYPES_TABLE_NAME;
 import static com.babarehner.android.partsrunner.data.PartsRunnerContract.PATH_MACHINES_TABLE_NAME;
@@ -84,9 +90,18 @@ import static com.babarehner.android.partsrunner.data.PartsRunnerContract.Machin
                          null, sortOrder);
                  break;
              case MACHINE_ID:
-                 selection = _ID + "=?";
+                 selection = _IDM + "=?";
                  selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
                  c = db.query(MACHINE_TABLE_NAME, projection, selection, selectionArgs,
+                         null, null, sortOrder);
+                 break;
+             case EQUIPMENT_TYPES:
+                 c = db.query(EQUIPMENT_TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder);
+                 break;
+             case EQUIPMENT_TYPES_ID:
+                 selection = _IDT + "=?";
+                 selectionArgs = new String[] {String.valueOf(ContentUris.parseId(uri))};
+                 c = db.query(PartsRunnerContract.EquipmentType.EQUIPMENT_TABLE_NAME, projection, selection, selectionArgs,
                          null, null, sortOrder);
                  break;
              default:
@@ -108,6 +123,8 @@ import static com.babarehner.android.partsrunner.data.PartsRunnerContract.Machin
          switch (match) {
              case MACHINES:
                  return insertRecord(uri, values);
+             case EQUIPMENT_TYPES:
+                 return insertEquipmentType(uri, values);
              default:
                  throw new IllegalArgumentException("Insertion is not supported for: " + uri);
          }
@@ -117,11 +134,28 @@ import static com.babarehner.android.partsrunner.data.PartsRunnerContract.Machin
      // Insert a record into the records table with the given content values. Return the new content uri
      // for that specific row in the database
      public Uri insertRecord(Uri uri, ContentValues values) {
-         // Check the the practice type is not null
-         String prac_type = values.getAsString(C_MACHINE_TYPE);
 
          SQLiteDatabase db = mDBHelper.getWritableDatabase();
          long id = db.insert(MACHINE_TABLE_NAME, null, values);
+         Log.v(LOG_TAG, "Record not entered");
+         if (id == -1) {
+             Log.e(LOG_TAG, "Failed to insert row for " + uri);
+             return null;
+         }
+
+         // notify all listeners that the data has changed for the TSTUFF table
+         getContext().getContentResolver().notifyChange(uri, null);
+         // return the new Uri with the ID of the newly inserted row appended to the db
+         return ContentUris.withAppendedId(uri, id);
+     }
+
+
+     // Insert a record into the Equipment Types table with the given content values. Return the new content uri
+     // for that specific row in the database
+     public Uri insertEquipmentType(Uri uri, ContentValues values) {
+
+         SQLiteDatabase db = mDBHelper.getWritableDatabase();
+         long id = db.insert(EQUIPMENT_TABLE_NAME, null, values);
          Log.v(LOG_TAG, "Record not entered");
          if (id == -1) {
              Log.e(LOG_TAG, "Failed to insert row for " + uri);
@@ -142,9 +176,15 @@ import static com.babarehner.android.partsrunner.data.PartsRunnerContract.Machin
              case MACHINES:
                  return updateRecords(uri, values, selection, selectionArgs);
              case MACHINE_ID:
-                 selection = _ID + "=?";
+                 selection = _IDM + "=?";
                  selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
                  return updateRecords(uri, values, selection, selectionArgs);
+             case EQUIPMENT_TYPES:
+                 return updateEquipmentTypes(uri, values, selection, selectionArgs);
+             case EQUIPMENT_TYPES_ID:
+                 selection = _IDT +"=?";
+                 selectionArgs = new String[] {String.valueOf(ContentUris.parseId(uri))};
+                 return updateEquipmentTypes(uri, values, selection, selectionArgs);
              default:
                  throw new IllegalArgumentException("Update is not supported for: " + uri);
          }
@@ -166,14 +206,41 @@ import static com.babarehner.android.partsrunner.data.PartsRunnerContract.Machin
      }
 
 
+     private int updateEquipmentTypes(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+         // if there are no values quit
+         if (values.size() == 0) {
+             return 0;
+         }
+
+         SQLiteDatabase db = mDBHelper.getWritableDatabase();
+         int rows_updated = db.update(EQUIPMENT_TABLE_NAME, values, selection, selectionArgs);
+         if (rows_updated != 0) {
+             getContext().getContentResolver().notifyChange(uri, null);
+         }
+         return rows_updated;
+     }
+
+
      @Override
      public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
          int rowsDeleted;
          SQLiteDatabase db = mDBHelper.getWritableDatabase();
-         // final int match = sUriMatcher.match(uri);
-         selection = _ID + "=?";
-         selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
-         rowsDeleted = db.delete(MACHINE_TABLE_NAME, selection, selectionArgs);
+         final int match = sUriMatcher.match(uri);
+
+         switch (match) {
+            case MACHINE_ID:
+                selection = _IDM + "=?";
+                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
+                rowsDeleted = db.delete(MACHINE_TABLE_NAME, selection, selectionArgs);
+                break;
+            case EQUIPMENT_TYPES_ID:
+                selection = _IDT + "=?";
+                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
+                rowsDeleted = db.delete(EQUIPMENT_TABLE_NAME, selection, selectionArgs);
+                break;
+            default:
+                throw new IllegalArgumentException("Deletion is not supported for: " + uri);
+         }
 
          if (rowsDeleted != 0) {
              // Notify all listeners that the db has changed
@@ -193,6 +260,10 @@ import static com.babarehner.android.partsrunner.data.PartsRunnerContract.Machin
                  return MACHINE_LIST_TYPE;
              case MACHINE_ID:
                  return MACHINE_ITEM_TYPE;
+             case EQUIPMENT_TYPES:
+                 return EQUIPMENT_TYPE_LIST_TYPE;
+             case EQUIPMENT_TYPES_ID:
+                 return EQUIPMENT_TYPE_ITEM_TYPE;
              default:
                  throw new IllegalStateException("Unknown Uri: " + uri + "with match: " + match);
          }

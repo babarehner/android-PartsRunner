@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_library"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_margin"
+    tools:context="com.babarehner.android.partsrunner.EquipmentTypeActivity">
+
+    <ListView
+        android:id="@+id/practice_aid_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Empty view for the list -->
+    <RelativeLayout
+        android:id="@+id/equipment_type_empty_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <!-- need to make an empty record image
+        <ImageView
+            android:id="@+id/empty_shelter_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_empty_shelter"/>
+
+        <TextView
+            android:id="@+id/empty_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-medium"
+            android:paddingTop="16dp"
+            android:text="@string/empty_view_title_text"
+            android:textAppearance="?android:textAppearanceMedium"/>
+        -->
+
+        <TextView
+            android:id="@+id/empty_practice_aid_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif"
+            android:paddingTop="8dp"
+            android:text="@string/empty_view_equipment_type_text"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="#A2AAB0"/>
+    </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/pa_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_add_box_black_24dp"
+        android:scaleType="center"/>
+
+</RelativeLayout>

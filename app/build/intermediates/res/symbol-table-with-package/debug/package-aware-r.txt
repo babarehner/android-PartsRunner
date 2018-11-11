@@ -764,6 +764,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable ic_add_box_black_24dp
 drawable ic_done
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -800,6 +801,7 @@ id action_container
 id action_context_bar
 id action_delete
 id action_divider
+id action_edit_equip_types
 id action_image
 id action_menu_divider
 id action_menu_presenter
@@ -807,11 +809,11 @@ id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
 id action_save
-id action_settings
 id action_share
 id action_text
 id actions
 id activity_chooser_view_content
+id activity_library
 id activity_main
 id add
 id alertTitle
@@ -847,13 +849,16 @@ id design_menu_item_action_area_stub
 id design_menu_item_text
 id design_navigation_view
 id disableHome
+id edit_equip_types
 id edit_query
+id empty_practice_aid_text
 id empty_subtitle_text
 id empty_view
 id end
 id end_padder
 id enterAlways
 id enterAlwaysCollapsed
+id equipment_type_empty_view
 id et_item_num
 id et_manufacturer
 id et_model
@@ -886,6 +891,7 @@ id line1
 id line3
 id listMode
 id list_item
+id list_item_equip_type
 id list_item_manufacturer
 id list_item_model
 id list_item_year
@@ -903,6 +909,7 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id pa_fab
 id packed
 id parallax
 id parent
@@ -910,6 +917,7 @@ id parentPanel
 id parent_matrix
 id pick_year
 id pin
+id practice_aid_list
 id progress_circular
 id progress_horizontal
 id radio
@@ -1029,6 +1037,8 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_add_edit_item
+layout activity_edit_equip_type
+layout activity_equipment_type
 layout activity_main
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -1044,6 +1054,7 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
+layout equipment_type_list_item
 layout machine_list_item
 layout notification_action
 layout notification_action_tombstone
@@ -1099,7 +1110,6 @@ string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string action_delete
 string action_save
-string action_settings
 string activity_add_edit_item_title_add_machine
 string activity_add_edit_item_title_edit_machine
 string app_name
@@ -1114,8 +1124,10 @@ string delete_machine_successful
 string discard
 string edit_update_machine_failed
 string edit_update_machine_success
+string empty_view_equipment_type_text
 string empty_view_subtitle_text
 string empty_view_title_text
+string equipment_types
 string insert_machine_failed
 string insert_machine_good
 string item_num

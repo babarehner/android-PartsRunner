@@ -38,5 +38,10 @@
     <string name="which_one">Which number if more than one</string>
     <string name="notes">Put notes here</string>
 
+    <!-- activity_equipment_type.xml -->
+    <string name="empty_view_equipment_type_text">If there are no Equipment Types listed
+    please add some by clicking on the Floating Action Button (Plus Sign) below.</string>
+
+
 
 </resources>

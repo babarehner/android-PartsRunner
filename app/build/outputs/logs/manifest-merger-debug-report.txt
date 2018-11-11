@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-40:12
-INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-40:12
-INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-40:12
-INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-40:12
+ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-45:12
+INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-45:12
+INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-45:12
+INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-45:12
 MERGED from [com.android.support:design:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/79a9aa80bb9a48474253528d88a92bd0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:appcompat-v7:27.1.1] /home/mike/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/3da052ea34a288a1c6a6ac00d7901303/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/mike/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/8c59fd4066e80eb4fc193b741b58f1f1/AndroidManifest.xml:2:1-11:12
@@ -21,25 +21,25 @@ MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/mike/.gradle/cach
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/mike/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/cbf82d4b35edd7b5af91135b2894c0be/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/mike/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/28206393117a465d9092018ead67a097/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.0] /home/mike/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/47e8d11a40f2776f8aab15d0d3f7355c/AndroidManifest.xml:17:1-22:12
-INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-40:12
-INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-40:12
-INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-40:12
+INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-45:12
+INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-45:12
+INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-45:12
 	package
 		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:3:5-49
 		INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
 		INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
-		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-40:12
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-45:12
 		INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
-		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-40:12
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:1-45:12
 		INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:2:11-69
 application
-ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:5:5-38:19
+ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:5:5-43:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/mike/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/8c59fd4066e80eb4fc193b741b58f1f1/AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/mike/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/8c59fd4066e80eb4fc193b741b58f1f1/AndroidManifest.xml:9:5-20
 	android:supportsRtl
@@ -55,43 +55,45 @@ MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/mike/
 	android:theme
 		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:11:9-40
 activity#com.babarehner.android.partsrunner.MainActivity
-ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:13:9-22:20
-	android:label
-		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:15:13-45
-	android:theme
-		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:16:13-56
+ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:13:9-18:20
 	android:name
-		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:14:13-41
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:13:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:17:13-21:29
+ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:14:13-17:29
 action#android.intent.action.MAIN
-ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:18:17-69
+ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:15:17-69
 	android:name
-		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:18:25-66
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:15:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:20:17-77
+ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:16:17-77
 	android:name
-		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:20:27-74
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:16:27-74
 activity#com.babarehner.android.partsrunner.AddEditItemActivity
-ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:24:9-31:20
+ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:20:9-27:20
 	android:parentActivityName
-		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:26:13-55
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:22:13-55
 	android:name
-		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:25:13-48
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:21:13-48
 meta-data#android.support.PARENT_ACTIVITY
-ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:28:13-30:56
+ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:24:13-26:56
 	android:value
-		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:30:17-53
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:26:17-53
 	android:name
-		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:29:17-63
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:25:17-63
+activity#com.babarehner.android.partsrunner.EquipmentTypeActivity
+ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:29:9-36:20
+	android:parentActivityName
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:31:13-55
+	android:name
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:30:13-50
 provider#com.babarehner.android.partsrunner.data.PartsRunnerProvider
-ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:33:9-36:40
+ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:38:9-41:40
 	android:authorities
-		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:35:13-69
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:40:13-69
 	android:exported
-		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:36:13-37
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:41:13-37
 	android:name
-		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:34:13-53
+		ADDED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml:39:13-53
 uses-sdk
 INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/mike/proj/android/PartsRunner/app/src/main/AndroidManifest.xml
