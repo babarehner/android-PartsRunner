@@ -42,6 +42,15 @@
     <string name="empty_view_equipment_type_text">If there are no Equipment Types listed
     please add some by clicking on the Floating Action Button (Plus Sign) below.</string>
 
+    <!-- EditEquipTypeActivity.java -->
+    <string name="missing_equip_type">value is required to save a new Euipment Type</string>
+    <string name="parts_runner_provider_insert_record_failed">record save failed</string>
+    <string name="parts_runner_provider_insert_record_succeeded">record save succeeded</string>
+    <string name="edit_update_record_failed">Record update failed</string>
+    <string name="edit_update_record_success">Record update succeeded</string>
+    <string name="delete_record_failure">Record not deleted (Error)</string>
+    <string name="delete_record_successful">Record deleted</string>
+
 
 
 </resources>

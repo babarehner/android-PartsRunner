@@ -35,6 +35,15 @@
                 android:value=".EquipmentTypeActivity" />
         </activity>
 
+        <activity
+            android:name=".EditEquipTypeActivity"
+            android:parentActivityName=".EquipmentTypeActivity">
+            <!-- Parent activity metadata to support Android 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EditEquipTypeActivity" />
+        </activity>
+
         <provider
             android:name=".data.PartsRunnerProvider"
             android:authorities="com.babarehner.android.partsrunner"

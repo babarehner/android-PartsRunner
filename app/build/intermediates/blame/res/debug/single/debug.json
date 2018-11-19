@@ -612,12 +612,12 @@
         "source": "/home/mike/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/3da052ea34a288a1c6a6ac00d7901303/res/color-v23/abc_btn_colored_text_material.xml"
     },
     {
-        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/color_abc_tint_switch_track.xml.flat",
-        "source": "/home/mike/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/3da052ea34a288a1c6a6ac00d7901303/res/color/abc_tint_switch_track.xml"
-    },
-    {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
         "source": "/home/mike/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/3da052ea34a288a1c6a6ac00d7901303/res/drawable-xxxhdpi-v4/abc_btn_check_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/color_abc_tint_switch_track.xml.flat",
+        "source": "/home/mike/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/3da052ea34a288a1c6a6ac00d7901303/res/color/abc_tint_switch_track.xml"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
@@ -1374,6 +1374,10 @@
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
         "source": "/home/mike/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/3da052ea34a288a1c6a6ac00d7901303/res/drawable-mdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png"
+    },
+    {
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/menu_menu_edit_equip_type_activity.xml.flat",
+        "source": "/home/mike/proj/android/PartsRunner/app/src/main/res/menu/menu_edit_equip_type_activity.xml"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",

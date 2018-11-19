@@ -19,7 +19,7 @@ import com.babarehner.android.partsrunner.data.PartsRunnerContract;
 
 public class EquipmentTypeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private static final int EQUIP_TYPE_LOADER = 0;
+    private static final int EQUIP_TYPE_LOADER = 15;
     EquipTypeCursorAdapter mCursorAdapter;
 
     @Override
@@ -27,11 +27,11 @@ public class EquipmentTypeActivity extends AppCompatActivity implements LoaderMa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipment_type);
 
-        setTitle("Practice Aids");
+        setTitle("Equipment Types");
 
         // Create a floating action button Need to add
         // compile 'com.android.support:design:26.1.0' to build gradle module
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.pa_fab);
+        FloatingActionButton fab = findViewById(R.id.pa_fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,7 +41,7 @@ public class EquipmentTypeActivity extends AppCompatActivity implements LoaderMa
         });
 
 
-        ListView equipTypeListView = (ListView) findViewById(R.id.practice_aid_list);
+        ListView equipTypeListView = findViewById(R.id.practice_aid_list);
         // display the empty view
         View emptyView = findViewById(R.id.equipment_type_empty_view);
         equipTypeListView.setEmptyView(emptyView);
@@ -52,9 +52,9 @@ public class EquipmentTypeActivity extends AppCompatActivity implements LoaderMa
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int pos, long id) {
                 Intent intent = new Intent(EquipmentTypeActivity.this, EditEquipTypeActivity.class);
-                Uri currentPracticeAidUri = ContentUris.withAppendedId(
+                Uri currentEquipTypeUri = ContentUris.withAppendedId(
                         PartsRunnerContract.EquipmentType.EQUIP_TYPE_URI, id);
-                intent.setData(currentPracticeAidUri);
+                intent.setData(currentEquipTypeUri);
                 startActivity(intent);
 
             }
