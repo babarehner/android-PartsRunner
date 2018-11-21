@@ -26,6 +26,8 @@ package com.babarehner.android.partsrunner;
  import android.content.Intent;
  import android.content.Loader;
  import android.database.Cursor;
+ import android.database.CursorWindow;
+ import android.database.CursorWrapper;
  import android.net.Uri;
  import android.os.Bundle;
  import android.support.v4.app.DialogFragment;
@@ -41,8 +43,10 @@ package com.babarehner.android.partsrunner;
  import android.widget.AdapterView;
  import android.widget.ArrayAdapter;
  import android.widget.Button;
+ import android.widget.CursorAdapter;
  import android.widget.DatePicker;
  import android.widget.EditText;
+ import android.widget.SimpleCursorAdapter;
  import android.widget.Spinner;
  import android.widget.TextView;
  import android.widget.Toast;
@@ -56,14 +60,20 @@ package com.babarehner.android.partsrunner;
  public class AddEditItemActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
      public static final int EXISTING_ADD_EDIT_MACHINE_LOADER = 0;
+     public static final int LOADER_EQUIP_TYPE = 1;
 
      public static CharSequence[] EQUIP_TYPES;
 
      private final String LOG_TAG = AddEditItemActivity.class.getSimpleName();
 
      private Uri mCurrentMachineUri;
+     private Uri mCurrentEquipTypeUri;
 
-     private Spinner mSpinnerMachineType;
+     private Spinner mSpinEquipType;
+     SimpleCursorAdapter mSpinAdapter;
+     String equipType;
+     int POS = 0;
+
      private EditText mEditTextYear;
      private EditText mEditTextManufacturer;
      private EditText mEditTextModel;
@@ -72,7 +82,6 @@ package com.babarehner.android.partsrunner;
      private EditText mEditTextItemNum;
      private EditText mEditTextNotes;
      private Button mButtonModelYear;
-
 
      private TextView mTextViewYear;
      private Button mButtonPickYear;
@@ -114,12 +123,43 @@ package com.babarehner.android.partsrunner;
              setTitle(getString(R.string.activity_add_edit_item_title_edit_machine));
              getLoaderManager().initLoader(EXISTING_ADD_EDIT_MACHINE_LOADER, null,
                      AddEditItemActivity.this);
+             getLoaderManager().initLoader(LOADER_EQUIP_TYPE, null,
+                     AddEditItemActivity.this);
          }
 
          // initialization required or it crashes
          //mTextViewYear = (TextView) findViewById(R.id.et_year);
          // Find all input views to read from
-         mSpinnerMachineType = findViewById(R.id.sp_machine_type);
+
+
+         mSpinEquipType = findViewById(R.id.sp_machine_type);
+         /**
+         PartsRunnerDBHelper db = new PartsRunnerDBHelper(getApplicationContext());
+         List<String> machineTypeList = db.getEquipmentTypes();
+         ArrayAdapter<String> spinAdapter = new ArrayAdapter(this,
+                 android.R.layout.simple_spinner_dropdown_item, machineTypeList);
+         spinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+         mSpinEquipType.setAdapter(spinAdapter);
+          **/
+
+         mSpinAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item,
+                 null, new String[]{PartsRunnerContract.EquipmentType.C_EQUIPMENT_TYPE},
+                 new int[] {android.R.id.text1}, 0);
+         mSpinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+         mSpinEquipType.setAdapter(mSpinAdapter);
+
+         /**
+         mSpinEquipType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+             @Override
+             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                 String equipType = (String) parent.getItemAtPosition((pos));
+             }
+             @Override
+             public void onNothingSelected(AdapterView<?> parent){
+             }
+         });
+         **/
+
          mEditTextManufacturer = (EditText) findViewById(R.id.et_manufacturer);
          mEditTextYear = (EditText) findViewById(R.id.et_model_year);
          mButtonModelYear = (Button) findViewById(R.id.pick_year);
@@ -129,14 +169,8 @@ package com.babarehner.android.partsrunner;
          mEditTextItemNum = (EditText) findViewById(R.id.et_item_num);
          mEditTextNotes = findViewById(R.id.et_notes);
 
-         PartsRunnerDBHelper db = new PartsRunnerDBHelper(getApplicationContext());
-         List<String> machineTypeList = db.getEquipmentTypes();
-         EQUIP_TYPES = machineTypeList.toArray(new CharSequence[machineTypeList.size()]);
-
-         mSpinnerMachineType = getSpinnerVal(R.id.sp_machine_type, EQUIP_TYPES, 2);
-
          // Set up Touch Listener on all input fields to see if a field has been modified
-         mSpinnerMachineType.setOnTouchListener(mTouchListener);
+         mSpinEquipType.setOnTouchListener(mTouchListener);
          mEditTextManufacturer.setOnTouchListener(mTouchListener);
          mButtonModelYear.setOnTouchListener(mTouchListener);
          mEditTextModel.setOnTouchListener(mTouchListener);
@@ -145,79 +179,153 @@ package com.babarehner.android.partsrunner;
          mEditTextItemNum.setOnTouchListener(mTouchListener);
          mEditTextNotes.setOnTouchListener(mTouchListener);
 
-         //getYear();
      }
 
 
 
 
      @Override
-     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-         String[] projection = {PartsRunnerContract.MachineEntry._IDM,
-                 PartsRunnerContract.MachineEntry.C_MACHINE_TYPE,
-                 PartsRunnerContract.MachineEntry.C_MODEL_YEAR,
-                 PartsRunnerContract.MachineEntry.C_MANUFACTURER,
-                 PartsRunnerContract.MachineEntry.C_MODEL,
-                 PartsRunnerContract.MachineEntry.C_MODEL_NUM,
-                 PartsRunnerContract.MachineEntry.C_SERIAL_NUM,
-                 PartsRunnerContract.MachineEntry.C_MACHINE_NUM,
-                 PartsRunnerContract.MachineEntry.C_NOTES };
-         // start a new thread
-         return new CursorLoader(this, mCurrentMachineUri, projection, null,
-                 null, null);
+     public Loader<Cursor> onCreateLoader(int loaderId, Bundle bundle) {
+         Loader<Cursor> loader = null; // returns null if not either case
+         switch (loaderId){
+             case EXISTING_ADD_EDIT_MACHINE_LOADER:
+                 String[] projectionMachines = {PartsRunnerContract.MachineEntry._IDM,
+                         PartsRunnerContract.MachineEntry.C_MACHINE_TYPE,
+                         PartsRunnerContract.MachineEntry.C_MODEL_YEAR,
+                         PartsRunnerContract.MachineEntry.C_MANUFACTURER,
+                         PartsRunnerContract.MachineEntry.C_MODEL,
+                         PartsRunnerContract.MachineEntry.C_MODEL_NUM,
+                         PartsRunnerContract.MachineEntry.C_SERIAL_NUM,
+                         PartsRunnerContract.MachineEntry.C_MACHINE_NUM,
+                         PartsRunnerContract.MachineEntry.C_NOTES};
+                 // new loader for new thread
+                 loader = new CursorLoader(this, mCurrentMachineUri, projectionMachines, null,
+                     null, null);
+                 break;
+             case LOADER_EQUIP_TYPE:
+                 // get the URI for equipment types
+                 //String queryUri = PartsRunnerContract.EquipmentType.EQUIP_TYPE_URI.toString();
+                 //mCurrentEquipTypeUri = Uri.parse(queryUri);
+                 mCurrentEquipTypeUri = PartsRunnerContract.EquipmentType.EQUIP_TYPE_URI;
+                 String[] projectionEquipType = {PartsRunnerContract.EquipmentType._IDT,
+                         PartsRunnerContract.EquipmentType.C_EQUIPMENT_TYPE};
+                 loader = new CursorLoader(this, mCurrentEquipTypeUri, projectionEquipType, null,
+                         null, null);
+                 break;
+         }
+
+         return loader;
      }
 
      @Override
      public void onLoadFinished(Loader<Cursor> loader, Cursor c) {
-         // move to the only row in the cursor
-         if (c.moveToFirst()) {
-             int machineTypeColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_MACHINE_TYPE);
-             int modelYearColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_MODEL_YEAR);
-             int manufacturerColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_MANUFACTURER);
-             int modelColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_MODEL);
-             int modelNumColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_MODEL_NUM);
-             int serialNumColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_SERIAL_NUM);
-             int machineNumColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_MACHINE_NUM);
-             int notesColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_NOTES);
+         switch (loader.getId()){
+             case EXISTING_ADD_EDIT_MACHINE_LOADER:
+                 // move to the only row in the cursor
 
-             // use index to pull data out of the cursor
-             String machineType = c.getString(machineTypeColIndex);
-             String modelYear = c.getString(modelYearColIndex);
-             String manufacturer = c.getString(manufacturerColIndex);
-             String model = c.getString(modelColIndex);
-             String modelNum = c.getString(modelNumColIndex);
-             String serialNum = c.getString(serialNumColIndex);
-             String machineNum = c.getString(machineNumColIndex);
-             String notes = c.getString(notesColIndex);
+                 if (c.moveToFirst()) {
+                     int machineTypeColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_MACHINE_TYPE);
+                     int modelYearColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_MODEL_YEAR);
+                     int manufacturerColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_MANUFACTURER);
+                     int modelColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_MODEL);
+                     int modelNumColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_MODEL_NUM);
+                     int serialNumColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_SERIAL_NUM);
+                     int machineNumColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_MACHINE_NUM);
+                     int notesColIndex = c.getColumnIndex(PartsRunnerContract.MachineEntry.C_NOTES);
+
+                     // use index to pull data out of the cursor
+                     String machineType = c.getString(machineTypeColIndex);
+                     String modelYear = c.getString(modelYearColIndex);
+                     String manufacturer = c.getString(manufacturerColIndex);
+                     String model = c.getString(modelColIndex);
+                     String modelNum = c.getString(modelNumColIndex);
+                     String serialNum = c.getString(serialNumColIndex);
+                     String machineNum = c.getString(machineNumColIndex);
+                     String notes = c.getString(notesColIndex);
 
 
-             // deal with the spinner view
-             ArrayAdapter arrayMachineType = (ArrayAdapter) mSpinnerMachineType.getAdapter();
-             int pos = arrayMachineType.getPosition(machineType);
-             mSpinnerMachineType.setSelection(pos);mEditTextSerialNum.setText(serialNum);
-             // update the rest of the views
-             mEditTextYear.setText(modelYear);
-             mEditTextManufacturer.setText(manufacturer);
-             mEditTextModel.setText(model);
-             mEditTextModelNum.setText(modelNum);
-             mEditTextSerialNum.setText(serialNum);
-             mEditTextItemNum.setText(machineNum);
-             mEditTextNotes.setText(notes);
+                     // deal with the spinner view
+                     // ArrayAdapter arrayMachineType = (ArrayAdapter) mSpinEquipType.getAdapter();
+                     // int pos = arrayMachineType.getPosition(machineType);
+                     // mSpinEquipType.setSelection(pos);
+                     int pos = 0;
+
+                     CursorAdapter sca = (CursorAdapter) mSpinEquipType.getAdapter();
+                     CursorWrapper  mCursorWrapper;
+                     /**
+                      * This get count does not work
+                     for ( int i = 0; i < sca.getCount(); i++) {
+                         if (sca.getItem(i).toString().equals(machineType)){
+                             pos = i;
+                             break;
+                         }
+                     }
+                      **/
+
+                      // this get count works
+                     for (int i = 0; i < mSpinEquipType.getCount(); i++){
+                         mCursorWrapper = (CursorWrapper) mSpinEquipType.getItemAtPosition(i);
+                         //TODO need to find value of String.valueOf(mCursorWrapper)
+                         if (String.valueOf(mCursorWrapper.getString(1)).equals
+                                 (machineType)){
+                             pos = i + 1;
+                             break;
+                         }
+                         //pos = i;
+                     }
+
+                     /**
+                     for (int i = 0; i < mSpinEquipType.getCount(); i++){
+                         String item = (String) mSpinEquipType.getItemAtPosition(i);
+                         if (item.equals(machineType)){
+                             pos = i;
+                         }
+                     }
+                     **/
+
+
+                     mSpinEquipType.setSelection(pos);
+
+                     // update the rest of the views
+                     mEditTextYear.setText(modelYear);
+                     mEditTextManufacturer.setText(manufacturer);
+                     mEditTextModel.setText(model);
+                     mEditTextModelNum.setText(modelNum);
+                     mEditTextSerialNum.setText(serialNum);
+                     mEditTextItemNum.setText(machineNum);
+                     mEditTextNotes.setText(notes);
+
+                 }
+
+                 break;
+             case LOADER_EQUIP_TYPE:
+                 mSpinAdapter.swapCursor(c);
+                 break;
          }
      }
+
 
 
      @Override
      public void onLoaderReset(Loader<Cursor> loader) {
          // If invalid Loader clear data from input field
-         mSpinnerMachineType.setSelection(0);
-         mEditTextYear.setText("");
-         mEditTextManufacturer.setText("");
-         mEditTextModel.setText("");
-         mEditTextModelNum.setText("");
-         mEditTextSerialNum.setText("");
-         mEditTextItemNum.setText("");
-         mEditTextNotes.setText("");
+         switch (loader.getId()){
+             case EXISTING_ADD_EDIT_MACHINE_LOADER:
+                 mSpinEquipType.setSelection(0);
+                 mEditTextYear.setText("");
+                 mEditTextManufacturer.setText("");
+                 mEditTextModel.setText("");
+                 mEditTextModelNum.setText("");
+                 mEditTextSerialNum.setText("");
+                 mEditTextItemNum.setText("");
+                 mEditTextNotes.setText("");
+                 break;
+             case LOADER_EQUIP_TYPE:
+                 // if invalid loader clear data from field
+                 mSpinAdapter.swapCursor(null);
+                 break;
+         }
+
      }
 
      @Override   // show the options menu
@@ -273,6 +381,7 @@ package com.babarehner.android.partsrunner;
          }
          return super.onOptionsItemSelected(item);
      }
+
 
      // set up the spinners passing the a resource ID, an array of values, i not used currently
      private Spinner getSpinnerVal(int resourceID, final CharSequence[] a, final int i) {
@@ -379,7 +488,7 @@ package com.babarehner.android.partsrunner;
          builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
              @Override
              public void onClick(DialogInterface dialog, int which) {
-                 // User clicked delet so delete
+                 // User clicked delete so delete
                  deleteExercise();
              }
          });
@@ -405,7 +514,7 @@ package com.babarehner.android.partsrunner;
          builder.setNegativeButton(R.string.keep_editing, new DialogInterface.OnClickListener() {
              @Override
              public void onClick(DialogInterface dialog, int id) {
-                 // user clicked the "keep eiditing" button. Dismiss dialog and keep editing
+                 // user clicked the "keep editing" button. Dismiss dialog and keep editing
                  if (dialog !=null) { dialog.dismiss();}
              }
          });
