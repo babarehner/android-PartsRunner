@@ -152,7 +152,7 @@ package com.babarehner.android.partsrunner;
          mEditTextItemNum.setOnTouchListener(mTouchListener);
          mEditTextNotes.setOnTouchListener(mTouchListener);
      }
-     
+
 
      @Override
      public Loader<Cursor> onCreateLoader(int loaderId, Bundle bundle) {
