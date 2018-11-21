@@ -74,24 +74,6 @@ public class PartsRunnerDBHelper extends SQLiteOpenHelper {
     }
 
 
-    // TODO rawQuery not using asynctask or LOADER- should be updated later.
-    public List<String> getEquipmentTypes(){
-        List<String> equipmentTypes = new ArrayList<>();
-        String fEquipmentTypeQuery = "SELECT * FROM " + PartsRunnerContract.EquipmentType.EQUIPMENT_TABLE_NAME +
-                " ORDER BY " + PartsRunnerContract.EquipmentType.C_EQUIPMENT_TYPE + ";" ;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery(fEquipmentTypeQuery, null);
-        if (c.moveToFirst()) {
-            do {
-                equipmentTypes.add(c.getString(1));
-            } while (c.moveToNext());
-        }
-        // Log.v(LOG_TAG, "practice Aides " + practiceAides);
-        c.close();
-        db.close();
-        return equipmentTypes;
-    }
-
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {

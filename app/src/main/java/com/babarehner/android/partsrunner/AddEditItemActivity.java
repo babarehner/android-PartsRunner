@@ -16,9 +16,6 @@
 
 package com.babarehner.android.partsrunner;
 
- import android.app.Activity;
- import android.app.DatePickerDialog;
- import android.app.Dialog;
  import android.app.LoaderManager;
  import android.content.ContentValues;
  import android.content.CursorLoader;
@@ -41,10 +38,7 @@ package com.babarehner.android.partsrunner;
  import android.view.MotionEvent;
  import android.view.View;
  import android.widget.AdapterView;
- import android.widget.ArrayAdapter;
  import android.widget.Button;
- import android.widget.CursorAdapter;
- import android.widget.DatePicker;
  import android.widget.EditText;
  import android.widget.SimpleCursorAdapter;
  import android.widget.Spinner;
@@ -54,15 +48,11 @@ package com.babarehner.android.partsrunner;
  import com.babarehner.android.partsrunner.data.PartsRunnerContract;
  import com.babarehner.android.partsrunner.data.PartsRunnerDBHelper;
 
- import java.util.Calendar;
- import java.util.List;
 
  public class AddEditItemActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
      public static final int EXISTING_ADD_EDIT_MACHINE_LOADER = 0;
      public static final int LOADER_EQUIP_TYPE = 1;
-
-     public static CharSequence[] EQUIP_TYPES;
 
      private final String LOG_TAG = AddEditItemActivity.class.getSimpleName();
 
@@ -71,8 +61,6 @@ package com.babarehner.android.partsrunner;
 
      private Spinner mSpinEquipType;
      SimpleCursorAdapter mSpinAdapter;
-     String equipType;
-     int POS = 0;
 
      private EditText mEditTextYear;
      private EditText mEditTextManufacturer;
@@ -83,13 +71,7 @@ package com.babarehner.android.partsrunner;
      private EditText mEditTextNotes;
      private Button mButtonModelYear;
 
-     private TextView mTextViewYear;
-     private Button mButtonPickYear;
-     private int mYear;
-
-     private String[] mSpinVal = {"", "", "", ""};
-
-     static final int DATE_DIALOG_ID = 99;
+     private String mSpinVal = "";
 
      private boolean mMachineChanged = false;   // When edit change made to an exercise row
 
@@ -98,6 +80,7 @@ package com.babarehner.android.partsrunner;
          @Override
          public boolean onTouch(View v, MotionEvent event) {
              mMachineChanged = true;
+             v.performClick();  //added to suppress warning for not programming for disabled
              return false;
          }
      };
@@ -110,7 +93,10 @@ package com.babarehner.android.partsrunner;
          //Get intent and get data from intent
          Intent intent = getIntent();
          mCurrentMachineUri = intent.getData();
-         // String str = mCurrentItemUri.toString();
+
+         // intitialize this loader first to load spinner
+         getLoaderManager().initLoader(LOADER_EQUIP_TYPE, null,
+                 AddEditItemActivity.this);
 
          // If the intent does not contain a single item-  Uri FAB clicked
          if (mCurrentMachineUri == null) {
@@ -123,50 +109,37 @@ package com.babarehner.android.partsrunner;
              setTitle(getString(R.string.activity_add_edit_item_title_edit_machine));
              getLoaderManager().initLoader(EXISTING_ADD_EDIT_MACHINE_LOADER, null,
                      AddEditItemActivity.this);
-             getLoaderManager().initLoader(LOADER_EQUIP_TYPE, null,
-                     AddEditItemActivity.this);
          }
 
-         // initialization required or it crashes
-         //mTextViewYear = (TextView) findViewById(R.id.et_year);
-         // Find all input views to read from
-
-
          mSpinEquipType = findViewById(R.id.sp_machine_type);
-         /**
-         PartsRunnerDBHelper db = new PartsRunnerDBHelper(getApplicationContext());
-         List<String> machineTypeList = db.getEquipmentTypes();
-         ArrayAdapter<String> spinAdapter = new ArrayAdapter(this,
-                 android.R.layout.simple_spinner_dropdown_item, machineTypeList);
-         spinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-         mSpinEquipType.setAdapter(spinAdapter);
-          **/
 
-         mSpinAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item,
+         mSpinAdapter = new SimpleCursorAdapter(getApplicationContext(), android.R.layout.simple_spinner_item,
                  null, new String[]{PartsRunnerContract.EquipmentType.C_EQUIPMENT_TYPE},
                  new int[] {android.R.id.text1}, 0);
          mSpinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
          mSpinEquipType.setAdapter(mSpinAdapter);
 
-         /**
          mSpinEquipType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
              @Override
-             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                 String equipType = (String) parent.getItemAtPosition((pos));
+             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                 // String mSpinVal = (String) parent.getItemAtPosition(position);
+                 CursorWrapper cw;  //wtf do I have to use a CursorWrapper when mucking with a db
+                 cw = (CursorWrapper) parent.getItemAtPosition(position);
+                 mSpinVal = String.valueOf(cw.getString(1)); //1 is position of value
              }
              @Override
-             public void onNothingSelected(AdapterView<?> parent){
+             public void onNothingSelected(AdapterView<?> parent) {
+                 mSpinVal = "";
              }
          });
-         **/
 
-         mEditTextManufacturer = (EditText) findViewById(R.id.et_manufacturer);
-         mEditTextYear = (EditText) findViewById(R.id.et_model_year);
+         mEditTextManufacturer = findViewById(R.id.et_manufacturer);
+         mEditTextYear =  findViewById(R.id.et_model_year);
          mButtonModelYear = (Button) findViewById(R.id.pick_year);
-         mEditTextModel = (EditText) findViewById(R.id.et_model);
-         mEditTextModelNum = (EditText) findViewById(R.id.et_model_num);
-         mEditTextSerialNum = (EditText) findViewById(R.id.et_serial_num);
-         mEditTextItemNum = (EditText) findViewById(R.id.et_item_num);
+         mEditTextModel = findViewById(R.id.et_model);
+         mEditTextModelNum = findViewById(R.id.et_model_num);
+         mEditTextSerialNum = findViewById(R.id.et_serial_num);
+         mEditTextItemNum = findViewById(R.id.et_item_num);
          mEditTextNotes = findViewById(R.id.et_notes);
 
          // Set up Touch Listener on all input fields to see if a field has been modified
@@ -178,11 +151,8 @@ package com.babarehner.android.partsrunner;
          mEditTextSerialNum.setOnTouchListener(mTouchListener);
          mEditTextItemNum.setOnTouchListener(mTouchListener);
          mEditTextNotes.setOnTouchListener(mTouchListener);
-
      }
-
-
-
+     
 
      @Override
      public Loader<Cursor> onCreateLoader(int loaderId, Bundle bundle) {
@@ -243,46 +213,19 @@ package com.babarehner.android.partsrunner;
                      String machineNum = c.getString(machineNumColIndex);
                      String notes = c.getString(notesColIndex);
 
-
-                     // deal with the spinner view
-                     // ArrayAdapter arrayMachineType = (ArrayAdapter) mSpinEquipType.getAdapter();
-                     // int pos = arrayMachineType.getPosition(machineType);
-                     // mSpinEquipType.setSelection(pos);
+                      // of all the ways I tried mSpinQuipType (not adapter) & CursorWrapper
+                     // were the only way I could get the string from the spinner
+                     CursorWrapper  cursorWrapper;
                      int pos = 0;
-
-                     CursorAdapter sca = (CursorAdapter) mSpinEquipType.getAdapter();
-                     CursorWrapper  mCursorWrapper;
-                     /**
-                      * This get count does not work
-                     for ( int i = 0; i < sca.getCount(); i++) {
-                         if (sca.getItem(i).toString().equals(machineType)){
-                             pos = i;
-                             break;
-                         }
-                     }
-                      **/
-
-                      // this get count works
+                     // Go through the spinner list and find a match with item in db
                      for (int i = 0; i < mSpinEquipType.getCount(); i++){
-                         mCursorWrapper = (CursorWrapper) mSpinEquipType.getItemAtPosition(i);
-                         //TODO need to find value of String.valueOf(mCursorWrapper)
-                         if (String.valueOf(mCursorWrapper.getString(1)).equals
+                         cursorWrapper = (CursorWrapper) mSpinEquipType.getItemAtPosition(i);
+                         if (String.valueOf(cursorWrapper.getString(1)).equals
                                  (machineType)){
-                             pos = i + 1;
+                             pos = i;
                              break;
                          }
-                         //pos = i;
                      }
-
-                     /**
-                     for (int i = 0; i < mSpinEquipType.getCount(); i++){
-                         String item = (String) mSpinEquipType.getItemAtPosition(i);
-                         if (item.equals(machineType)){
-                             pos = i;
-                         }
-                     }
-                     **/
-
 
                      mSpinEquipType.setSelection(pos);
 
@@ -383,36 +326,12 @@ package com.babarehner.android.partsrunner;
      }
 
 
-     // set up the spinners passing the a resource ID, an array of values, i not used currently
-     private Spinner getSpinnerVal(int resourceID, final CharSequence[] a, final int i) {
-         Log.v("AddEditItemActivity", Integer.toString(resourceID));
-         Spinner s = (Spinner)  findViewById(resourceID);
-         ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(this,
-                 android.R.layout.simple_spinner_item, a);
-         // Specify the layout to use when the list of choices appear
-         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-         s.setAdapter(adapter); // apply the adapter to the spinner
-         s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-             @Override
-             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                 String selection = (String) parent.getItemAtPosition(position);
-                 Log.v("AddEditItemActivity", selection);
-                 mSpinVal[i] = selection;
-             }
-             @Override
-             public void onNothingSelected(AdapterView<?> parent) {
-                 mSpinVal[0] = a[0].toString();
-             }
-         });
-         return s;
-     }
-
 
      private void saveMachine() {
 
          // read from EditText input fields
          // TODO get data from Spinner
-         String equipmentType = mSpinVal[2];
+         String equipmentType = mSpinVal;
          String manufacturerString = mEditTextManufacturer.getText().toString().trim();
          String modelYearString = mEditTextYear.getText().toString().trim();
          String modelString = mEditTextModel.getText().toString().trim();
