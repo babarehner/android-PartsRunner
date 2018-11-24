@@ -80,7 +80,10 @@ package com.babarehner.android.partsrunner;
          @Override
          public boolean onTouch(View v, MotionEvent event) {
              mMachineChanged = true;
-             v.performClick();  //added to suppress warning for not programming for disabled
+             // following line was added to suppress warning for not programming for disabled
+             // v.performClick();
+             // above line caused date picker to hang up- probably because a click needed to be handled
+             // in an onTouch event for date picker.
              return false;
          }
      };
@@ -112,6 +115,14 @@ package com.babarehner.android.partsrunner;
          }
 
          mSpinEquipType = findViewById(R.id.sp_machine_type);
+         mEditTextManufacturer = findViewById(R.id.et_manufacturer);
+         mEditTextYear =  findViewById(R.id.et_model_year);
+         mButtonModelYear = (Button) findViewById(R.id.pick_year);
+         mEditTextModel = findViewById(R.id.et_model);
+         mEditTextModelNum = findViewById(R.id.et_model_num);
+         mEditTextSerialNum = findViewById(R.id.et_serial_num);
+         mEditTextItemNum = findViewById(R.id.et_item_num);
+         mEditTextNotes = findViewById(R.id.et_notes);
 
          mSpinAdapter = new SimpleCursorAdapter(getApplicationContext(), android.R.layout.simple_spinner_item,
                  null, new String[]{PartsRunnerContract.EquipmentType.C_EQUIPMENT_TYPE},
@@ -122,7 +133,6 @@ package com.babarehner.android.partsrunner;
          mSpinEquipType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
              @Override
              public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                 // String mSpinVal = (String) parent.getItemAtPosition(position);
                  CursorWrapper cw;  //wtf do I have to use a CursorWrapper when mucking with a db
                  cw = (CursorWrapper) parent.getItemAtPosition(position);
                  mSpinVal = String.valueOf(cw.getString(1)); //1 is position of value
@@ -132,15 +142,6 @@ package com.babarehner.android.partsrunner;
                  mSpinVal = "";
              }
          });
-
-         mEditTextManufacturer = findViewById(R.id.et_manufacturer);
-         mEditTextYear =  findViewById(R.id.et_model_year);
-         mButtonModelYear = (Button) findViewById(R.id.pick_year);
-         mEditTextModel = findViewById(R.id.et_model);
-         mEditTextModelNum = findViewById(R.id.et_model_num);
-         mEditTextSerialNum = findViewById(R.id.et_serial_num);
-         mEditTextItemNum = findViewById(R.id.et_item_num);
-         mEditTextNotes = findViewById(R.id.et_notes);
 
          // Set up Touch Listener on all input fields to see if a field has been modified
          mSpinEquipType.setOnTouchListener(mTouchListener);
@@ -254,7 +255,7 @@ package com.babarehner.android.partsrunner;
          // If invalid Loader clear data from input field
          switch (loader.getId()){
              case EXISTING_ADD_EDIT_MACHINE_LOADER:
-                 mSpinEquipType.setSelection(0);
+                 //mSpinEquipType.setSelection(0);
                  mEditTextYear.setText("");
                  mEditTextManufacturer.setText("");
                  mEditTextModel.setText("");
