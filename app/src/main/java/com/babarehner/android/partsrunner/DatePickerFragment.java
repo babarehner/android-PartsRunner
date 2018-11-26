@@ -26,12 +26,13 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
-        // return new DatePickerDialog(getActivity(), this, year, month, day);
-
-        // Set up DatePicker to only show year
-        // DatePickerDialog dpd = new DatePickerDialog(getActivity(),AlertDialog.THEME_HOLO_DARK,this,year, month, day){
-        // DatePickerDialog dpd = new DatePickerDialog(getActivity(),AlertDialog.THEME_HOLO_LIGHT,this,year, month, day){
-        DatePickerDialog dpd = new DatePickerDialog(getActivity(), AlertDialog.THEME_TRADITIONAL,this,year, month, day){
+        /* return new DatePickerDialog(getActivity(), this, year, month, day);
+          Set up DatePicker to only show year
+          DatePickerDialog dpd = new DatePickerDialog(getActivity(),AlertDialog.THEME_HOLO_DARK,this,year, month, day){
+          DatePickerDialog dpd = new DatePickerDialog(getActivity(),AlertDialog.THEME_HOLO_LIGHT,this,year, month, day){
+          DatePickerDialog dpd = new DatePickerDialog(getActivity(),AlertDialog.THEME_TRADITIONAL,this,year, month, day){
+         */
+        DatePickerDialog dpd = new DatePickerDialog(getActivity(), AlertDialog.THEME_HOLO_LIGHT,this,year, month, day){
             @Override
             protected void onCreate(Bundle savedInstanceState)
             {
@@ -64,7 +65,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
     public void onDateSet(DatePicker view, int year, int month, int day)
     {
 
-        EditText et = (EditText) getActivity().findViewById(R.id.et_model_year);
+        EditText et = getActivity().findViewById(R.id.et_model_year);
         // Calendar cal = Calendar.getInstance(); cal.setTimeInMillis(0);
         // cal.set(year, month, day,  0, 0, 0);
         // Date chosenDate = cal.getTime();
