@@ -5,10 +5,17 @@
     tools:context=".RecordActivity">
 
     <item
-        android:id="@+id/action_share"
-        android:title="@string/share"
+        android:id="@+id/action_share_email"
+        android:title="@string/share_email"
         app:actionProviderClass="android.support.v7.widget.ShareActionProvider"
         app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_share_text"
+        android:title="@string/share_text"
+        app:actionProviderClass="android.support.v7.widget.ShareActionProvider"
+        app:showAsAction="never"/>
+
 
     <item
         android:id="@+id/action_save"

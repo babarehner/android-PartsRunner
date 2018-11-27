@@ -29,8 +29,10 @@ package com.babarehner.android.partsrunner;
  import android.os.Bundle;
  import android.support.v4.app.DialogFragment;
  import android.support.v4.app.NavUtils;
+ import android.support.v4.view.MenuItemCompat;
  import android.support.v7.app.AlertDialog;
  import android.support.v7.app.AppCompatActivity;
+ import android.support.v7.widget.ShareActionProvider;
  import android.text.TextUtils;
  import android.util.Log;
  import android.view.Menu;
@@ -39,6 +41,7 @@ package com.babarehner.android.partsrunner;
  import android.view.View;
  import android.widget.AdapterView;
  import android.widget.Button;
+ import android.widget.EditText;
  import android.widget.EditText;
  import android.widget.SimpleCursorAdapter;
  import android.widget.Spinner;
@@ -51,10 +54,10 @@ package com.babarehner.android.partsrunner;
 
  public class AddEditItemActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
+     public final String LOG_TAG = AddEditItemActivity.class.getSimpleName();
+
      public static final int EXISTING_ADD_EDIT_MACHINE_LOADER = 0;
      public static final int LOADER_EQUIP_TYPE = 1;
-
-     private final String LOG_TAG = AddEditItemActivity.class.getSimpleName();
 
      private Uri mCurrentMachineUri;
      private Uri mCurrentEquipTypeUri;
@@ -74,6 +77,8 @@ package com.babarehner.android.partsrunner;
      private String mSpinVal = "";
 
      private boolean mMachineChanged = false;   // When edit change made to an exercise row
+
+     ShareActionProvider mShareActionProvider;
 
      // Touch Listener to check if changes made to a book
      private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
@@ -275,6 +280,10 @@ package com.babarehner.android.partsrunner;
      @Override   // show the options menu
      public boolean onCreateOptionsMenu(Menu m) {
          getMenuInflater().inflate(R.menu.menu_add_edit_item_activity, m);
+
+         mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider
+                 (m.findItem(R.id.action_share_email));
+         mShareActionProvider.setShareIntent(shareEMail());
          return true;
      }
 
@@ -284,8 +293,10 @@ package com.babarehner.android.partsrunner;
          super.onPrepareOptionsMenu(m);
          // if this is add an exercise, hide "delete" menu item
          if (mCurrentMachineUri == null) {
-             MenuItem menuItem = m.findItem(R.id.action_delete);
-             menuItem.setVisible(false);
+             MenuItem deleteItem = m.findItem(R.id.action_delete);
+             deleteItem.setVisible(false);
+             MenuItem shareEMailItem = m.findItem(R.id.action_share_email);
+             shareEMailItem.setVisible(false);
          }
          return true;
      }
@@ -298,6 +309,13 @@ package com.babarehner.android.partsrunner;
              case R.id.action_save:
                  saveMachine();
                  finish();       // exit activity
+                 return true;
+             case R.id.action_share_email:
+                 shareEMail();
+                 finish();
+                 return true;
+             case R.id.action_share_text:
+                 finish();
                  return true;
              case R.id.action_delete:
                  // Alert Dialog for deleting one book
@@ -469,6 +487,49 @@ package com.babarehner.android.partsrunner;
      public void showDatePickerDialog(View v){
          DialogFragment yearFragment = new DatePickerFragment();
          yearFragment.show(getSupportFragmentManager(), "datePicker");
+     }
+
+     private Intent shareEMail(){
+         Intent intent = new Intent(Intent.ACTION_SEND);
+
+         StringBuilder sb = buildShareString();
+         String s = sb.toString();
+         if (mShareActionProvider != null){
+             intent.setType("textPlain");
+             intent.putExtra(Intent.EXTRA_TEXT, s);
+         } else {
+             Log.v(LOG_TAG, "ShareActionProvider is null");
+         }
+
+         return intent;
+     }
+
+     private void shareText() {
+
+         StringBuilder share = buildShareString();
+         ShareDataFragment shareFragment = new ShareDataFragment();
+     }
+
+     private StringBuilder buildShareString(){
+
+         StringBuilder sb = new StringBuilder();
+
+         EditText mEditTextManufacturer = findViewById(R.id.et_manufacturer);
+         EditText mEditTextYear =  findViewById(R.id.et_model_year);
+         EditText mEditTextModel = findViewById(R.id.et_model);
+         EditText mEditTextModelNum = findViewById(R.id.et_model_num);
+         EditText mEditTextSerialNum = findViewById(R.id.et_serial_num);
+
+
+         sb.append(mEditTextYear.getText().toString()).append(" ")
+                 .append(mEditTextManufacturer.getText().toString()).append(" ")
+                 .append(mEditTextModel.getText().toString())
+                 .append(" Model Number: ").append(mEditTextModelNum.getText().toString())
+                 .append("  Serial Number: ").append(mEditTextSerialNum.getText().toString());
+         Log.v(LOG_TAG, "String Builder " + sb);
+
+         return sb;
+
      }
 
  }

@@ -811,7 +811,8 @@ id action_mode_bar_stub
 id action_mode_close_button
 id action_save
 id action_save_edit_equip_type
-id action_share
+id action_share_email
+id action_share_text
 id action_text
 id actions
 id activity_chooser_view_content
@@ -1155,7 +1156,8 @@ string path_password_eye_mask_visible
 string path_password_strike_through
 string search_menu_title
 string serial_num
-string share
+string share_email
+string share_text
 string status_bar_notification_info_overflow
 string unsaved_changes_dialog_msg
 string which_one
