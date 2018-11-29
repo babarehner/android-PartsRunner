@@ -23,7 +23,6 @@ package com.babarehner.android.partsrunner;
  import android.content.Intent;
  import android.content.Loader;
  import android.database.Cursor;
- import android.database.CursorWindow;
  import android.database.CursorWrapper;
  import android.net.Uri;
  import android.os.Bundle;
@@ -41,7 +40,6 @@ package com.babarehner.android.partsrunner;
  import android.view.View;
  import android.widget.AdapterView;
  import android.widget.Button;
- import android.widget.EditText;
  import android.widget.EditText;
  import android.widget.SimpleCursorAdapter;
  import android.widget.Spinner;
@@ -78,7 +76,7 @@ package com.babarehner.android.partsrunner;
 
      private boolean mMachineChanged = false;   // When edit change made to an exercise row
 
-     ShareActionProvider mShareActionProvider;
+     private ShareActionProvider mShareActionProvider;
 
      // Touch Listener to check if changes made to a book
      private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
@@ -277,13 +275,13 @@ package com.babarehner.android.partsrunner;
 
      }
 
-     @Override   // show the options menu
+     @Override   // set up the menu the first time
      public boolean onCreateOptionsMenu(Menu m) {
          getMenuInflater().inflate(R.menu.menu_add_edit_item_activity, m);
 
+         // relate mShareActionProvider to share e-mail menu item
          mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider
                  (m.findItem(R.id.action_share_email));
-         mShareActionProvider.setShareIntent(shareEMail());
          return true;
      }
 
@@ -292,6 +290,7 @@ package com.babarehner.android.partsrunner;
      public boolean onPrepareOptionsMenu(Menu m) {
          super.onPrepareOptionsMenu(m);
          // if this is add an exercise, hide "delete" menu item
+
          if (mCurrentMachineUri == null) {
              MenuItem deleteItem = m.findItem(R.id.action_delete);
              deleteItem.setVisible(false);
@@ -311,12 +310,14 @@ package com.babarehner.android.partsrunner;
                  finish();       // exit activity
                  return true;
              case R.id.action_share_email:
-                 shareEMail();
-                 finish();
+                 if (mShareActionProvider != null) {
+                     mShareActionProvider.setShareIntent(shareEMail());
+                 }
+                 // Intent.createChooser(i, " Create Chooser");
+                 Log.v(LOG_TAG, "in action share EMail after String Builder");
                  return true;
-             case R.id.action_share_text:
-                 finish();
-                 return true;
+             //case R.id.action_share_text:
+                 //return true;
              case R.id.action_delete:
                  // Alert Dialog for deleting one book
                  showDeleteConfirmationDialog();
@@ -489,13 +490,16 @@ package com.babarehner.android.partsrunner;
          yearFragment.show(getSupportFragmentManager(), "datePicker");
      }
 
-     private Intent shareEMail(){
+     public Intent shareEMail(){
          Intent intent = new Intent(Intent.ACTION_SEND);
 
-         StringBuilder sb = buildShareString();
+         StringBuilder sb = new StringBuilder(buildShareString());
          String s = sb.toString();
+         Log.v(LOG_TAG, "String from String Builder " + s);
          if (mShareActionProvider != null){
-             intent.setType("textPlain");
+             // spent all day looking for why I couldn't implement ACTION/SEND
+             // misspelled "text/plain as textPlain
+             intent.setType("text/plain");
              intent.putExtra(Intent.EXTRA_TEXT, s);
          } else {
              Log.v(LOG_TAG, "ShareActionProvider is null");
@@ -510,7 +514,7 @@ package com.babarehner.android.partsrunner;
          ShareDataFragment shareFragment = new ShareDataFragment();
      }
 
-     private StringBuilder buildShareString(){
+     public StringBuilder buildShareString(){
 
          StringBuilder sb = new StringBuilder();
 
@@ -520,12 +524,11 @@ package com.babarehner.android.partsrunner;
          EditText mEditTextModelNum = findViewById(R.id.et_model_num);
          EditText mEditTextSerialNum = findViewById(R.id.et_serial_num);
 
-
          sb.append(mEditTextYear.getText().toString()).append(" ")
                  .append(mEditTextManufacturer.getText().toString()).append(" ")
-                 .append(mEditTextModel.getText().toString())
-                 .append(" Model Number: ").append(mEditTextModelNum.getText().toString())
-                 .append("  Serial Number: ").append(mEditTextSerialNum.getText().toString());
+                 .append(mEditTextModel.getText().toString()).append("\n")
+                 .append("Model Number: ").append(mEditTextModelNum.getText().toString()).append("\n")
+                 .append("Serial Number: ").append(mEditTextSerialNum.getText().toString());
          Log.v(LOG_TAG, "String Builder " + sb);
 
          return sb;
