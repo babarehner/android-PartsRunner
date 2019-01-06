@@ -765,6 +765,7 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable ic_add_box_black_24dp
+drawable ic_build_white_24dp
 drawable ic_done
 drawable ic_launcher_background
 drawable ic_launcher_foreground

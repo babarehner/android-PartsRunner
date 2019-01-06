@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Parts Runner 0.10.0</string>
+    <string name="app_name">Parts Runner 0.11.0</string>
     <string name="equipment_types">Edit Equipment Types</string>
 
     <!-- Title text for the empty view [CHAR LIMIT=50] -->
