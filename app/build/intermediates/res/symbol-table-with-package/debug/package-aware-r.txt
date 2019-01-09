@@ -813,6 +813,7 @@ id action_mode_close_button
 id action_save
 id action_save_edit_equip_type
 id action_share_email
+id action_share_text
 id action_text
 id actions
 id activity_chooser_view_content

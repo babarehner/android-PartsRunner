@@ -10,6 +10,12 @@
         app:actionProviderClass="android.support.v7.widget.ShareActionProvider"
         app:showAsAction="never"/>
 
+    <item
+        android:id="@+id/action_share_text"
+        android:title="@string/share_text"
+        app:actionProviderClass="android.support.v7.widget.ShareActionProvider"
+        app:showAsAction="never"/>
+
 
     <item
         android:id="@+id/action_save"

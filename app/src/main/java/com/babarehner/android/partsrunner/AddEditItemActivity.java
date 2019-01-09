@@ -57,6 +57,9 @@ package com.babarehner.android.partsrunner;
      public static final int EXISTING_ADD_EDIT_MACHINE_LOADER = 0;
      public static final int LOADER_EQUIP_TYPE = 1;
 
+     public static final int SHARE_EMAIL = 0;
+     public static final int SHARE_TEXT =1;
+
      private Uri mCurrentMachineUri;
      private Uri mCurrentEquipTypeUri;
 
@@ -311,13 +314,17 @@ package com.babarehner.android.partsrunner;
                  return true;
              case R.id.action_share_email:
                  if (mShareActionProvider != null) {
-                     mShareActionProvider.setShareIntent(shareEMail());
+                     // returns an intent
+                     mShareActionProvider.setShareIntent(shareData(SHARE_EMAIL));
                  }
                  // Intent.createChooser(i, " Create Chooser");
                  Log.v(LOG_TAG, "in action share EMail after String Builder");
                  return true;
-             //case R.id.action_share_text:
-                 //return true;
+             case R.id.action_share_text:
+                 if (mShareActionProvider != null){
+                     mShareActionProvider.setShareIntent(shareData(SHARE_TEXT));
+                 }
+                 return true;
              case R.id.action_delete:
                  // Alert Dialog for deleting one book
                  showDeleteConfirmationDialog();
@@ -490,29 +497,21 @@ package com.babarehner.android.partsrunner;
          yearFragment.show(getSupportFragmentManager(), "datePicker");
      }
 
-     public Intent shareEMail(){
-         Intent intent = new Intent(Intent.ACTION_SEND);
 
+
+     private Intent shareData(int shareType){
          StringBuilder sb = new StringBuilder(buildShareString());
-         String s = sb.toString();
-         Log.v(LOG_TAG, "String from String Builder " + s);
-         if (mShareActionProvider != null){
-             // spent all day looking for why I couldn't implement ACTION/SEND
-             // misspelled "text/plain as textPlain
-             intent.setType("text/plain");
-             intent.putExtra(Intent.EXTRA_TEXT, s);
-         } else {
-             Log.v(LOG_TAG, "ShareActionProvider is null");
+         ShareDataFragment shareFragment = new ShareDataFragment();
+         Intent intent;
+         if (shareType == SHARE_TEXT) {
+             intent = shareFragment.shareText(mShareActionProvider, sb);
+         }else{
+             intent = shareFragment.shareEMail(mShareActionProvider, sb);
          }
-
          return intent;
      }
 
-     private void shareText() {
 
-         StringBuilder share = buildShareString();
-         ShareDataFragment shareFragment = new ShareDataFragment();
-     }
 
      public StringBuilder buildShareString(){
 
@@ -523,12 +522,16 @@ package com.babarehner.android.partsrunner;
          EditText mEditTextModel = findViewById(R.id.et_model);
          EditText mEditTextModelNum = findViewById(R.id.et_model_num);
          EditText mEditTextSerialNum = findViewById(R.id.et_serial_num);
+         EditText mEditTextNotes = findViewById(R.id .et_notes);
 
          sb.append(mEditTextYear.getText().toString()).append(" ")
                  .append(mEditTextManufacturer.getText().toString()).append(" ")
                  .append(mEditTextModel.getText().toString()).append("\n")
                  .append("Model Number: ").append(mEditTextModelNum.getText().toString()).append("\n")
-                 .append("Serial Number: ").append(mEditTextSerialNum.getText().toString());
+                 .append("Serial Number: ").append(mEditTextSerialNum.getText().toString())
+                 .append("\n\n")
+                 .append("Notes: ").append(mEditTextNotes.getText().toString()).append("\n\n");
+
          Log.v(LOG_TAG, "String Builder " + sb);
 
          return sb;
