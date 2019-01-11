@@ -183,11 +183,14 @@ package com.babarehner.android.partsrunner;
                  // get the URI for equipment types
                  //String queryUri = PartsRunnerContract.EquipmentType.EQUIP_TYPE_URI.toString();
                  //mCurrentEquipTypeUri = Uri.parse(queryUri);
+                 // BUG NOTE SORT ORDER REQUIRED because you are looking at Position when loading
+                 // and SQLITE does not provide a default sort !!!!
+                 String equipTypeSortOrder = PartsRunnerContract.EquipmentType.C_EQUIPMENT_TYPE + " ASC";
                  mCurrentEquipTypeUri = PartsRunnerContract.EquipmentType.EQUIP_TYPE_URI;
                  String[] projectionEquipType = {PartsRunnerContract.EquipmentType._IDT,
                          PartsRunnerContract.EquipmentType.C_EQUIPMENT_TYPE};
                  loader = new CursorLoader(this, mCurrentEquipTypeUri, projectionEquipType, null,
-                         null, null);
+                         null, equipTypeSortOrder);
                  break;
          }
 
@@ -283,8 +286,10 @@ package com.babarehner.android.partsrunner;
          getMenuInflater().inflate(R.menu.menu_add_edit_item_activity, m);
 
          // relate mShareActionProvider to share e-mail menu item
+         // initialize mShareActionProvider
          mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider
                  (m.findItem(R.id.action_share_email));
+
          return true;
      }
 
@@ -299,6 +304,8 @@ package com.babarehner.android.partsrunner;
              deleteItem.setVisible(false);
              MenuItem shareEMailItem = m.findItem(R.id.action_share_email);
              shareEMailItem.setVisible(false);
+             MenuItem shareTextItem = m.findItem(R.id.action_share_text);
+             shareTextItem.setVisible(false);
          }
          return true;
      }

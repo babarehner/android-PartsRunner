@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.babarehner.android.partsrunner.data.PartsRunnerContract;
 
+//TODO add onTouch Listener and wire up to messages
 public class EditEquipTypeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private final String LOG_TAG = EditEquipTypeActivity.class.getSimpleName();

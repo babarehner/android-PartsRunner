@@ -110,6 +110,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args){
+        String sortOrder = PartsRunnerContract.MachineEntry.C_MACHINE_TYPE + " ASC"
+                + ", " + PartsRunnerContract.MachineEntry.C_MODEL_YEAR + " ASC"
+                + ", " + PartsRunnerContract.MachineEntry.C_MANUFACTURER + " ASC";
         String [] projection = {PartsRunnerContract.MachineEntry._IDM,
                 PartsRunnerContract.MachineEntry.C_MACHINE_TYPE,
                 PartsRunnerContract.MachineEntry.C_MODEL_YEAR,
@@ -121,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 projection,
                 null,
                 null,
-                PartsRunnerContract.MachineEntry.C_MACHINE_TYPE + " ASC");
+                sortOrder);
     }
 
     @Override
