@@ -178,19 +178,20 @@ public class EditEquipTypeActivity extends AppCompatActivity implements LoaderMa
 
 
     private void saveRecord() {
-
-        String equipType =  mEditEquipEditText.getText().toString().trim();
+        String prevEquipType = mEditEquip;  // from DB called by OnLoadFinished
+        String newEquipType =  mEditEquipEditText.getText().toString().trim();
 
         // if the date field is left blank do nothing
-        if (mCurrentEditEquipUri == null & TextUtils.isEmpty(equipType)) {
+        if (mCurrentEditEquipUri == null & TextUtils.isEmpty(newEquipType)) {
             Toast.makeText(this, getString(R.string.missing_equip_type), Toast.LENGTH_LONG).show();
             return;
         }
 
         ContentValues values = new ContentValues();
-        values.put(PartsRunnerContract.EquipmentType.C_EQUIPMENT_TYPE, equipType);
+        values.put(PartsRunnerContract.EquipmentType.C_EQUIPMENT_TYPE, newEquipType);
 
-        if (mCurrentEditEquipUri == null) {
+
+        if (mCurrentEditEquipUri == null) {     // New record
             // a new record
             Log.v(LOG_TAG, "in saveRecord " + PartsRunnerContract.EquipmentType.EQUIP_TYPE_URI.toString() + "\n" + values);
             Uri newUri = getContentResolver().insert(PartsRunnerContract.EquipmentType.EQUIP_TYPE_URI, values);
@@ -214,6 +215,20 @@ public class EditEquipTypeActivity extends AppCompatActivity implements LoaderMa
                 Toast.makeText(this, getString(R.string.edit_update_record_success),
                         Toast.LENGTH_SHORT).show();
             }
+
+            // TODO Update needs to be rechecked after fixing bug in spinner
+            ContentValues valuesTMachines = new ContentValues();
+            valuesTMachines.put(PartsRunnerContract.MachineEntry.C_MACHINE_TYPE, newEquipType);
+
+            int rows = getContentResolver().update(PartsRunnerContract.MachineEntry.PARTS_RUNNER_URI,
+                   valuesTMachines, "CMachineType = ?" , new String [] {prevEquipType});
+
+            if (rows == 0) {
+                Toast.makeText(this, "Machine_Table Update Failed", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Machine_Table Update Succeeded", Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 

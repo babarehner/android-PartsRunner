@@ -401,7 +401,7 @@ package com.babarehner.android.partsrunner;
                          Toast.LENGTH_SHORT).show();
              }
          } else {
-             // existing book so update with content URI and pass in ContentValues
+             // existing record so update with content URI and pass in ContentValues
              int rowsAffected = getContentResolver().update(mCurrentMachineUri, values, null, null);
              if (rowsAffected == 0) {
                  // TODO Check db- Text Not Null does not seem to be working or entering
@@ -412,6 +412,7 @@ package com.babarehner.android.partsrunner;
                  Toast.makeText(this, getString(R.string.edit_update_machine_success),
                          Toast.LENGTH_SHORT).show();
              }
+             Cursor c = getContentResolver().query(mCurrentMachineUri, null, null, null, null);
 
          }
      }
