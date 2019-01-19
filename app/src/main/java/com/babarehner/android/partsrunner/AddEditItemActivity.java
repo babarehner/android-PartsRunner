@@ -24,6 +24,7 @@ package com.babarehner.android.partsrunner;
  import android.content.Loader;
  import android.database.Cursor;
  import android.database.CursorWrapper;
+ import android.database.sqlite.SQLiteCursor;
  import android.net.Uri;
  import android.os.Bundle;
  import android.support.v4.app.DialogFragment;
@@ -103,7 +104,7 @@ package com.babarehner.android.partsrunner;
          Intent intent = getIntent();
          mCurrentMachineUri = intent.getData();
 
-         // intitialize this loader first to load spinner
+         // intitialize this loader first to load spinner- first didn't seem to work
          getLoaderManager().initLoader(LOADER_EQUIP_TYPE, null,
                  AddEditItemActivity.this);
 
@@ -121,36 +122,50 @@ package com.babarehner.android.partsrunner;
          }
 
          mSpinEquipType = findViewById(R.id.sp_machine_type);
+
+         // The following may or may not have solved the intermittent load of spinner choices problem
+         Cursor c = getContentResolver().query(
+                 PartsRunnerContract.EquipmentType.EQUIP_TYPE_URI,
+                 null,
+                 null,
+                 null,
+                 PartsRunnerContract.EquipmentType.C_EQUIPMENT_TYPE + " ASC");
+
+         mSpinAdapter = new SimpleCursorAdapter(this,
+                 android.R.layout.simple_spinner_item,
+                 c,
+                 new String[]{PartsRunnerContract.EquipmentType.C_EQUIPMENT_TYPE},
+                 new int[] {android.R.id.text1},
+                 0);
+
+         mSpinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+         mSpinEquipType.setAdapter(mSpinAdapter);
+
+         mSpinEquipType.setSelection(0, false);
+         mSpinEquipType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+             @Override
+             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                 // CursorWrapper required when working with CursorLoader & SQLite DB
+                 CursorWrapper cw = (CursorWrapper) parent.getItemAtPosition(pos);
+                 mSpinVal = String.valueOf(cw.getString(1));
+             }
+             @Override
+             public void onNothingSelected(AdapterView<?> parent) {
+             //    mSpinVal = "";
+             }
+         });
+
          mEditTextManufacturer = findViewById(R.id.et_manufacturer);
          mEditTextYear =  findViewById(R.id.et_model_year);
-         mButtonModelYear = (Button) findViewById(R.id.pick_year);
+         mButtonModelYear = findViewById(R.id.pick_year);
          mEditTextModel = findViewById(R.id.et_model);
          mEditTextModelNum = findViewById(R.id.et_model_num);
          mEditTextSerialNum = findViewById(R.id.et_serial_num);
          mEditTextItemNum = findViewById(R.id.et_item_num);
          mEditTextNotes = findViewById(R.id.et_notes);
 
-         mSpinAdapter = new SimpleCursorAdapter(getApplicationContext(), android.R.layout.simple_spinner_item,
-                 null, new String[]{PartsRunnerContract.EquipmentType.C_EQUIPMENT_TYPE},
-                 new int[] {android.R.id.text1}, 0);
-         mSpinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-         mSpinEquipType.setAdapter(mSpinAdapter);
-
-         mSpinEquipType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-             @Override
-             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                 CursorWrapper cw;  //wtf do I have to use a CursorWrapper when mucking with a db
-                 cw = (CursorWrapper) parent.getItemAtPosition(position);
-                 mSpinVal = String.valueOf(cw.getString(1)); //1 is position of value
-             }
-             @Override
-             public void onNothingSelected(AdapterView<?> parent) {
-                 mSpinVal = "";
-             }
-         });
-
          // Set up Touch Listener on all input fields to see if a field has been modified
-         mSpinEquipType.setOnTouchListener(mTouchListener);
+         // mSpinEquipType.setOnTouchListener(mTouchListener);
          mEditTextManufacturer.setOnTouchListener(mTouchListener);
          mButtonModelYear.setOnTouchListener(mTouchListener);
          mEditTextModel.setOnTouchListener(mTouchListener);
@@ -223,14 +238,13 @@ package com.babarehner.android.partsrunner;
                      String machineNum = c.getString(machineNumColIndex);
                      String notes = c.getString(notesColIndex);
 
-                      // of all the ways I tried mSpinQuipType (not adapter) & CursorWrapper
-                     // were the only way I could get the string from the spinner
-                     CursorWrapper  cursorWrapper;
+                      // CursorWrapper required when working with CursorLoader & SQLite DB
+                     // CursorWrapper not required for raw queries
+                     CursorWrapper cw;
                      int pos = 0;
-                     // Go through the spinner list and find a match with item in db
                      for (int i = 0; i < mSpinEquipType.getCount(); i++){
-                         cursorWrapper = (CursorWrapper) mSpinEquipType.getItemAtPosition(i);
-                         if (String.valueOf(cursorWrapper.getString(1)).equals
+                         cw = (CursorWrapper) mSpinEquipType.getItemAtPosition(i);
+                         if (String.valueOf(cw.getString(1)).equals
                                  (machineType)){
                              pos = i;
                              break;
@@ -264,7 +278,8 @@ package com.babarehner.android.partsrunner;
          // If invalid Loader clear data from input field
          switch (loader.getId()){
              case EXISTING_ADD_EDIT_MACHINE_LOADER:
-                 //mSpinEquipType.setSelection(0);
+                 // mSpinEquipType.setSelection(0);
+                 // mSpinEquipType.
                  mEditTextYear.setText("");
                  mEditTextManufacturer.setText("");
                  mEditTextModel.setText("");
@@ -364,7 +379,6 @@ package com.babarehner.android.partsrunner;
      private void saveMachine() {
 
          // read from EditText input fields
-         // TODO get data from Spinner
          String equipmentType = mSpinVal;
          String manufacturerString = mEditTextManufacturer.getText().toString().trim();
          String modelYearString = mEditTextYear.getText().toString().trim();
@@ -376,7 +390,7 @@ package com.babarehner.android.partsrunner;
 
 
          ContentValues values = new ContentValues();
-         values.put(PartsRunnerContract.MachineEntry.C_MACHINE_TYPE, equipmentType);
+         values.put(PartsRunnerContract.MachineEntry.C_MACHINE_TYPE, mSpinVal);
          values.put(PartsRunnerContract.MachineEntry.C_MANUFACTURER, manufacturerString);
          values.put(PartsRunnerContract.MachineEntry.C_MODEL_YEAR, modelYearString);
          values.put(PartsRunnerContract.MachineEntry.C_MODEL, modelString);
@@ -412,8 +426,6 @@ package com.babarehner.android.partsrunner;
                  Toast.makeText(this, getString(R.string.edit_update_machine_success),
                          Toast.LENGTH_SHORT).show();
              }
-             Cursor c = getContentResolver().query(mCurrentMachineUri, null, null, null, null);
-
          }
      }
 
