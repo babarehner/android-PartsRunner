@@ -1,5 +1,6 @@
 package com.babarehner.android.partsrunner;
 
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
@@ -10,10 +11,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager;
+import android.support.v7.app.AppCompatDialogFragment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -21,7 +24,6 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.babarehner.android.partsrunner.data.PartsRunnerContract;
@@ -97,7 +99,7 @@ public class EditEquipTypeActivity extends AppCompatActivity implements LoaderMa
         mEditEquipEditText.setText("");
     }
 
-    // Options menu automatially called from onCreate I believe
+    // Options menu automatically called from onCreate I believe
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_edit_equip_type_activity, menu);
@@ -114,8 +116,9 @@ public class EditEquipTypeActivity extends AppCompatActivity implements LoaderMa
                 finish();       // exit activity
                 return true;
             case R.id.action_delete_edit_equip_type:
-                // Alert Dialog for deleting one record
+                // Alert Dialog for deleting one record;
                 showDeleteConfirmationDialog();
+                // deleteRecord();
                 return true;
             // this is the <- button on the toolbar
             case android.R.id.home:
@@ -216,7 +219,7 @@ public class EditEquipTypeActivity extends AppCompatActivity implements LoaderMa
                         Toast.LENGTH_SHORT).show();
             }
 
-            // TODO Update needs to be rechecked after fixing bug in spinner
+
             ContentValues valuesTMachines = new ContentValues();
             valuesTMachines.put(PartsRunnerContract.MachineEntry.C_MACHINE_TYPE, newEquipType);
 
@@ -228,7 +231,6 @@ public class EditEquipTypeActivity extends AppCompatActivity implements LoaderMa
             } else {
                 Toast.makeText(this, "Machine_Table Update Succeeded", Toast.LENGTH_SHORT).show();
             }
-
         }
     }
 
@@ -236,16 +238,40 @@ public class EditEquipTypeActivity extends AppCompatActivity implements LoaderMa
     // delete record from db
     private void deleteRecord(){
         if (mCurrentEditEquipUri != null) {
-            int rowsDeleted = getContentResolver().delete(mCurrentEditEquipUri, null, null);
-            if (rowsDeleted == 0) {
-                Toast.makeText(this, getString(R.string.delete_record_failure),
-                        Toast.LENGTH_SHORT).show();
+            // pull out the string value we are trying to delete
+            mEditEquipEditText = findViewById(R.id.edit_equip_types);
+            String deleteTry = mEditEquipEditText.getText().toString();
+
+            // set up the ContentProvider query
+            String[] projection = {PartsRunnerContract.MachineEntry._IDM, PartsRunnerContract.MachineEntry.C_MACHINE_TYPE};
+            String selectionClause = PartsRunnerContract.MachineEntry.C_MACHINE_TYPE  + " = ? ";
+            String[] selectionArgs = {deleteTry};
+
+            Cursor c = getContentResolver().query(
+                    PartsRunnerContract.MachineEntry.PARTS_RUNNER_URI,
+                    projection,
+                    selectionClause,
+                    selectionArgs,
+                    null );
+
+            // if there are no instances of the deleteTry string in the Machines DB
+            // Go ahead and try to delete. If deleteTry value is in CMachineType column do not delete (no cascade delete)
+            if (!c.moveToFirst()){
+                int rowsDeleted = getContentResolver().delete(mCurrentEditEquipUri, null, null);
+                if (rowsDeleted == 0) {
+                    Toast.makeText(this, getString(R.string.delete_record_failure),
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, getString(R.string.delete_record_successful),
+                            Toast.LENGTH_SHORT).show();
+                }
+                c.close();
+                finish();   // after deleting field value
             } else {
-                Toast.makeText(this, getString(R.string.delete_record_successful),
-                        Toast.LENGTH_SHORT).show();
+                c.close();
+                showNoCascadeDeleteDialog();
             }
         }
-        finish();
     }
 
 
@@ -293,5 +319,32 @@ public class EditEquipTypeActivity extends AppCompatActivity implements LoaderMa
     }
 
 
+     private void showNoCascadeDeleteDialog(){
+        final AlertDialog.Builder albldr = new AlertDialog.Builder(this);
+        StringBuilder sb = new StringBuilder();
+        sb.append("Unable to delete \"").append(mEditEquip)
+                .append(". In order to delete \"")
+                .append(mEditEquip)
+                .append("\" all of the records in the Parts Runner ITEMS table that have an ITEM TYPE of \"")
+                .append(mEditEquip)
+                .append("\" must be changed to another ITEM TYPE.")
+                .append("\n\n OR \n\n")
+                .append("You can delete all the ITEMS that have an ITEM TYPE of \"")
+                .append(mEditEquip)
+                .append("\" in the Parts Runner ITEMS table.");
+
+        albldr.setMessage(sb);
+        albldr.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // click on warning message
+                finish();  // go back to previous activity when item not cascade deleted
+
+            }
+        });
+
+        AlertDialog alertDialog = albldr.create();
+        alertDialog.show();
+    }
 
 }

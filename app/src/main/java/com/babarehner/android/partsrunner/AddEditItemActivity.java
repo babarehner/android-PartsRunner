@@ -165,7 +165,7 @@ package com.babarehner.android.partsrunner;
          mEditTextNotes = findViewById(R.id.et_notes);
 
          // Set up Touch Listener on all input fields to see if a field has been modified
-         // mSpinEquipType.setOnTouchListener(mTouchListener);
+         mSpinEquipType.setOnTouchListener(mTouchListener);
          mEditTextManufacturer.setOnTouchListener(mTouchListener);
          mButtonModelYear.setOnTouchListener(mTouchListener);
          mEditTextModel.setOnTouchListener(mTouchListener);

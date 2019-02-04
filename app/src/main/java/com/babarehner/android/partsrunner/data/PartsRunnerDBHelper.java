@@ -63,7 +63,7 @@ public class PartsRunnerDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_EQUIPMENT_TYPE_TABLE);
 
         //  Load the Practice Aids Table with values the first time the db is created
-        String[] equipmentTypes = { "Computers", "Refrigerators", "Vehicles" };
+        String[] equipmentTypes = { "Computer", "Household Appliance", "Kitchen Appliance", "Vehicle" };
 
         for (String each : equipmentTypes){
             sqLiteDatabase.execSQL("INSERT INTO " + PartsRunnerContract.EquipmentType.EQUIPMENT_TABLE_NAME
@@ -85,6 +85,20 @@ public class PartsRunnerDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PartsRunnerContract.MachineEntry.MACHINE_TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PartsRunnerContract.EquipmentType.EQUIPMENT_TABLE_NAME);
         onCreate(sqLiteDatabase);
+    }
+
+
+    public boolean checkMachineTypeValues(String s){
+        boolean isValueInCol = false;
+        String strSQL = "SELECT CMachineType FROM TMachines WHERE CMachineType = '" + s + "' ;";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery(strSQL, null);
+        if (c.moveToFirst()){
+            isValueInCol = true;
+        }
+        c.close();
+        db.close();
+        return isValueInCol;
     }
 
 }

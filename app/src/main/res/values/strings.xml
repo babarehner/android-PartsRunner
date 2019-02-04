@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Parts Runner 0.15.0</string>
+    <string name="app_name">Parts Runner</string>
     <string name="equipment_types">Edit Equipment Types</string>
 
     <!-- Title text for the empty view [CHAR LIMIT=50] -->
@@ -42,7 +42,7 @@
     please add some by clicking on the Floating Action Button (Plus Sign) below.</string>
 
     <!-- EditEquipTypeActivity.java -->
-    <string name="missing_equip_type">value is required to save a new Euipment Type</string>
+    <string name="missing_equip_type">value is required to save a new Equipment Type</string>
     <string name="parts_runner_provider_insert_record_failed">record save failed</string>
     <string name="parts_runner_provider_insert_record_succeeded">record save succeeded</string>
     <string name="edit_update_record_failed">Record update failed</string>
@@ -51,6 +51,7 @@
     <string name="delete_record_successful">Record deleted</string>
     <string name="share_text">Share as text message</string>
     <string name="share_email">Share as e-mail</string>
+    <string name="unable_to_cascade_delete">Unable to Cascade Delete</string>
 
 
 </resources>
