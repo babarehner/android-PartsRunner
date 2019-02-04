@@ -28,5 +28,10 @@
         <item name="android:textAppearance">?android:textAppearanceSmall</item>
     </style>
 
+    <!-- easiest method to change spinner item textcolor -->
+    <style name="spinnerTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
 
 </resources>

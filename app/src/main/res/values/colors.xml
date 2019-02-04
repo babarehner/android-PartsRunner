@@ -2,8 +2,10 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
+    <!-- original accent color (too garrish)
     <color name="colorAccent">#FF4081</color>
-
+    !-->
+    <color name="colorAccent">#ffda33</color>
     <!-- styles.xml -->
     <color name="editColorText">#003366</color>
 
