@@ -1944,6 +1944,7 @@ int style Widget_MaterialComponents_TextInputLayout_OutlinedBox 0x7f0f01f0
 int style Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense 0x7f0f01f1
 int style Widget_MaterialComponents_Toolbar 0x7f0f01f2
 int style Widget_Support_CoordinatorLayout 0x7f0f01f3
+int style spinnerTheme 0x7f0f01f4
 int[] styleable ActionBar { 0x7f030031, 0x7f030032, 0x7f030033, 0x7f030097, 0x7f030098, 0x7f030099, 0x7f03009a, 0x7f03009b, 0x7f03009c, 0x7f0300aa, 0x7f0300af, 0x7f0300b0, 0x7f0300bb, 0x7f0300e6, 0x7f0300eb, 0x7f0300f0, 0x7f0300f1, 0x7f0300f3, 0x7f0300fd, 0x7f030107, 0x7f03015c, 0x7f030168, 0x7f030179, 0x7f03017d, 0x7f03017e, 0x7f0301ac, 0x7f0301af, 0x7f0301f4, 0x7f0301fe }
 int styleable ActionBar_background 0
 int styleable ActionBar_backgroundSplit 1
