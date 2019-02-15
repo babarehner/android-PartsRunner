@@ -32,7 +32,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
           DatePickerDialog dpd = new DatePickerDialog(getActivity(),AlertDialog.THEME_HOLO_LIGHT,this,year, month, day){
           DatePickerDialog dpd = new DatePickerDialog(getActivity(),AlertDialog.THEME_TRADITIONAL,this,year, month, day){
          */
-        DatePickerDialog dpd = new DatePickerDialog(getActivity(), AlertDialog.THEME_HOLO_LIGHT,this,year, month, day){
+        DatePickerDialog dpd = new DatePickerDialog(getActivity(),AlertDialog.THEME_TRADITIONAL, this,year, month, day){
             @Override
             protected void onCreate(Bundle savedInstanceState)
             {
@@ -53,7 +53,6 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
                         monthPicker.setVisibility(View.GONE);
                     }
                 }
-
             }
         };
 

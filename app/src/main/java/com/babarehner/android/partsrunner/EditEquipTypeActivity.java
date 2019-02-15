@@ -58,9 +58,9 @@ public class EditEquipTypeActivity extends AppCompatActivity implements LoaderMa
         mCurrentEditEquipUri = intent.getData();
 
         if (mCurrentEditEquipUri == null) {
-            setTitle("Add an Equipment Type");
+            setTitle("Add an Equipment/Item Type");
         } else {
-            setTitle("Edit Equipment Type");
+            setTitle("Edit Equipment/Item Type");
             getLoaderManager().initLoader(EXISTING_EDIT_EQUIP_LOADER, null, EditEquipTypeActivity.this);
         }
 

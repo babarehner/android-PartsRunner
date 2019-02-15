@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Parts Runner</string>
-    <string name="equipment_types">Edit Equipment Types</string>
+    <string name="app_name">Parts Runner 1.0.1</string>
+    <string name="equipment_types">Edit Equipment/Item Types</string>
 
     <!-- Title text for the empty view [CHAR LIMIT=50] -->
     <string name="empty_view_title_text">OH NO Mr. Bill I\'m a lazy Lima Bean who has not entered anything in the Machines\' sheets.</string>
@@ -22,7 +22,7 @@
     <string name="action_save">Save</string>
     <string name="action_delete">Delete this item</string>
     <string name="insert_machine_failed">Failed to save machine/item</string>
-    <string name="insert_machine_good">machine/item successfully served</string>
+    <string name="insert_machine_good">machine/item successfully saved</string>
     <string name="edit_update_machine_failed">failed to update machine/item</string>
     <string name="edit_update_machine_success">update machine/item succeeded</string>
     <string name="delete_machine_failure">failed to delete machine/item</string>

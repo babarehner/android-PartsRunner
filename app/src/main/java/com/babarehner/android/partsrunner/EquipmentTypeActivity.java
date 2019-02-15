@@ -27,7 +27,7 @@ public class EquipmentTypeActivity extends AppCompatActivity implements LoaderMa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipment_type);
 
-        setTitle("Equipment Types");
+        setTitle("Equipment/Item Types");
 
         // Create a floating action button Need to add
         // compile 'com.android.support:design:26.1.0' to build gradle module
