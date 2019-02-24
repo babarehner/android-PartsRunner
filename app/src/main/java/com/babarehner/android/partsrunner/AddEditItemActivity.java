@@ -143,8 +143,7 @@ package com.babarehner.android.partsrunner;
 
          mSpinEquipType.setSelection(0, false);
          mSpinEquipType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-             @Override
-             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+             @Override             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                  // CursorWrapper required when working with CursorLoader & SQLite DB
                  CursorWrapper cw = (CursorWrapper) parent.getItemAtPosition(pos);
                  mSpinVal = String.valueOf(cw.getString(1));

@@ -13,7 +13,7 @@
     <!-- activity_add_edit_item.xml -->
     <string name="machine_type">Item Type:"</string>
     <string name="year">Year</string>
-    <string name="manufacturer">Manufacturer:</string>
+    <string name="manufacturer">Manufacturer/Item:</string>
     <string name="model">Model:</string>
     <string name="model_num">Model No:</string>
     <string name="serial_num">Serial No:</string>
@@ -22,11 +22,11 @@
     <string name="action_save">Save</string>
     <string name="action_delete">Delete this item</string>
     <string name="insert_machine_failed">Failed to save machine/item</string>
-    <string name="insert_machine_good">machine/item successfully saved</string>
-    <string name="edit_update_machine_failed">failed to update machine/item</string>
-    <string name="edit_update_machine_success">update machine/item succeeded</string>
-    <string name="delete_machine_failure">failed to delete machine/item</string>
-    <string name="delete_machine_successful">delete machine/item succeeded</string>
+    <string name="insert_machine_good">Machine/item successfully saved</string>
+    <string name="edit_update_machine_failed">Failed to update machine/item</string>
+    <string name="edit_update_machine_success">Update machine/item succeeded</string>
+    <string name="delete_machine_failure">Failed to delete machine/item</string>
+    <string name="delete_machine_successful">Delete machine/item succeeded</string>
     <string name="delete_dialog_msg">Delete this record</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
@@ -42,9 +42,9 @@
     please add some by clicking on the Floating Action Button (Plus Sign) below.</string>
 
     <!-- EditEquipTypeActivity.java -->
-    <string name="missing_equip_type">value is required to save a new Equipment Type</string>
-    <string name="parts_runner_provider_insert_record_failed">record save failed</string>
-    <string name="parts_runner_provider_insert_record_succeeded">record save succeeded</string>
+    <string name="missing_equip_type">Value is required to save a new Equipment Type</string>
+    <string name="parts_runner_provider_insert_record_failed">Record save failed</string>
+    <string name="parts_runner_provider_insert_record_succeeded">Record save succeeded</string>
     <string name="edit_update_record_failed">Record update failed</string>
     <string name="edit_update_record_success">Record update succeeded</string>
     <string name="delete_record_failure">Record not deleted (Error)</string>
