@@ -1010,7 +1010,6 @@ drawable ic_build_gold_24dp
 drawable ic_build_white_24dp
 drawable ic_done
 drawable ic_launcher_background
-drawable ic_launcher_background_blue
 drawable ic_launcher_foreground
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle

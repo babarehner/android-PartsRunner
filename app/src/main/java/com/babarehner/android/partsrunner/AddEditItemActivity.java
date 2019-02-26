@@ -123,7 +123,8 @@ package com.babarehner.android.partsrunner;
 
          mSpinEquipType = findViewById(R.id.sp_machine_type);
 
-         // The following may or may not have solved the intermittent load of spinner choices problem
+         // Acts as initialization, otherwise the loader does not pull the
+         // fill the spinner fast enough to putll the item out of the db
          Cursor c = getContentResolver().query(
                  PartsRunnerContract.EquipmentType.EQUIP_TYPE_URI,
                  null,
@@ -131,6 +132,8 @@ package com.babarehner.android.partsrunner;
                  null,
                  PartsRunnerContract.EquipmentType.C_EQUIPMENT_TYPE + " ASC");
 
+         // the null projection cursor c needs to come in from the initialization above
+         // to make sure the spinner is loaded first
          mSpinAdapter = new SimpleCursorAdapter(this,
                  android.R.layout.simple_spinner_item,
                  c,
@@ -140,6 +143,9 @@ package com.babarehner.android.partsrunner;
 
          mSpinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
          mSpinEquipType.setAdapter(mSpinAdapter);
+         // intialize mSpinSymptomVal to first item in spinner in case spinner not touched by user
+         CursorWrapper w = (CursorWrapper) mSpinEquipType.getItemAtPosition(0);
+         mSpinVal = String.valueOf(w.getString(1));
 
          mSpinEquipType.setSelection(0, false);
          mSpinEquipType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
