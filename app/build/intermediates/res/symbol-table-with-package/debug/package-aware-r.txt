@@ -829,6 +829,7 @@ dimen design_textinput_caption_translate_y
 dimen disabled_alpha_material_dark
 dimen disabled_alpha_material_light
 dimen fab_margin
+dimen fabmargin
 dimen fastscroll_default_thickness
 dimen fastscroll_margin
 dimen fastscroll_minimum_range
@@ -1104,7 +1105,6 @@ id disableHome
 id edit_equip_types
 id edit_query
 id empty_practice_aid_text
-id empty_subtitle_text
 id empty_view
 id end
 id enterAlways
@@ -1131,6 +1131,16 @@ id ghost_view
 id gone
 id group_divider
 id groups
+id guideline_1
+id guideline_1_lis
+id guideline_2
+id guideline_2_lis
+id guideline_bottom
+id guideline_left
+id guideline_left_lis
+id guideline_right
+id guideline_right_lis
+id guideline_top
 id home
 id homeAsUp
 id icon
