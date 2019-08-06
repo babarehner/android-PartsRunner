@@ -4,7 +4,7 @@
             "outputFile": "/home/mike/proj/android/PartsRunner/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "/home/mike/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0.aar/3538495b7831a5e83192c0735523371d/res/values-v23/values-v23.xml",
+                    "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/f187799346e3a95ca7d6055e7b232d0d/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/home/mike/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/caa751e04919596694031ac9f94a4073/res/values-v23/values-v23.xml",
+                    "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/11da9b7104a699b0565aea0a23495c66/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,19,32,33,34,35,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
