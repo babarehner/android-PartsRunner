@@ -16,6 +16,7 @@
 
 package com.babarehner.android.partsrunner;
 
+ import android.app.DatePickerDialog;
  import android.app.LoaderManager;
  import android.content.ContentValues;
  import android.content.CursorLoader;
@@ -30,6 +31,7 @@ package com.babarehner.android.partsrunner;
  import android.support.v4.app.DialogFragment;
  import android.support.v4.app.NavUtils;
  import android.support.v4.view.MenuItemCompat;
+ import android.support.v4.widget.TextViewCompat;
  import android.support.v7.app.AlertDialog;
  import android.support.v7.app.AppCompatActivity;
  import android.support.v7.widget.ShareActionProvider;
@@ -41,6 +43,7 @@ package com.babarehner.android.partsrunner;
  import android.view.View;
  import android.widget.AdapterView;
  import android.widget.Button;
+ import android.widget.DatePicker;
  import android.widget.EditText;
  import android.widget.SimpleCursorAdapter;
  import android.widget.Spinner;
@@ -153,6 +156,8 @@ package com.babarehner.android.partsrunner;
                  // CursorWrapper required when working with CursorLoader & SQLite DB
                  CursorWrapper cw = (CursorWrapper) parent.getItemAtPosition(pos);
                  mSpinVal = String.valueOf(cw.getString(1));
+                 // Change the output string appearance
+                 // TextViewCompat.setTextAppearance(((TextView) view),android.R.style.TextAppearance_Small);
              }
              @Override
              public void onNothingSelected(AdapterView<?> parent) {
@@ -521,6 +526,8 @@ package com.babarehner.android.partsrunner;
          DialogFragment yearFragment = new DatePickerFragment();
          yearFragment.show(getSupportFragmentManager(), "datePicker");
      }
+
+
 
 
 
