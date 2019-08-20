@@ -136,12 +136,12 @@
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable-ldrtl-mdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
-        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable_abc_tab_indicator_material.xml.flat",
-        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable/abc_tab_indicator_material.xml"
-    },
-    {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/layout_notification_action.xml.flat",
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/cd771360bdd1fbd082acb778d0300b11/res/layout/notification_action.xml"
+    },
+    {
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable_abc_tab_indicator_material.xml.flat",
+        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable/abc_tab_indicator_material.xml"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
@@ -150,6 +150,10 @@
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/layout_abc_alert_dialog_button_bar_material.xml.flat",
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/layout/abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_ic_save_white_24dp.xml.flat",
+        "source": "/home/mike/proj/android/PartsRunner/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_save_white_24dp.xml"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -168,20 +172,20 @@
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable-xxhdpi-v4/abc_list_selector_disabled_holo_dark.9.png"
     },
     {
-        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_done.png.flat",
-        "source": "/home/mike/proj/android/PartsRunner/app/build/generated/res/pngs/debug/drawable-ldpi/ic_done.png"
-    },
-    {
-        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/layout_abc_list_menu_item_checkbox.xml.flat",
-        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/layout/abc_list_menu_item_checkbox.xml"
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/interpolator_mtrl_linear_out_slow_in.xml.flat",
+        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/70fc0476a36eec2a4b345225a88a4380/res/interpolator/mtrl_linear_out_slow_in.xml"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/layout_abc_list_menu_item_layout.xml.flat",
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/layout/abc_list_menu_item_layout.xml"
     },
     {
-        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/interpolator_mtrl_linear_out_slow_in.xml.flat",
-        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/70fc0476a36eec2a4b345225a88a4380/res/interpolator/mtrl_linear_out_slow_in.xml"
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/layout_abc_list_menu_item_checkbox.xml.flat",
+        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/layout/abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_done.png.flat",
+        "source": "/home/mike/proj/android/PartsRunner/app/build/generated/res/pngs/debug/drawable-ldpi/ic_done.png"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/layout_design_navigation_item.xml.flat",
@@ -216,24 +220,24 @@
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable-hdpi-v4/abc_text_select_handle_right_mtrl_light.png"
     },
     {
-        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_textfield_activated_mtrl_alpha.9.png.flat",
-        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable-mdpi-v4/abc_textfield_activated_mtrl_alpha.9.png"
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable_abc_btn_colored_material.xml.flat",
+        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable/abc_btn_colored_material.xml"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable_abc_seekbar_thumb_material.xml.flat",
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable/abc_seekbar_thumb_material.xml"
     },
     {
-        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable_abc_btn_colored_material.xml.flat",
-        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable/abc_btn_colored_material.xml"
-    },
-    {
-        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable_abc_item_background_holo_dark.xml.flat",
-        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable/abc_item_background_holo_dark.xml"
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_textfield_activated_mtrl_alpha.9.png.flat",
+        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable-mdpi-v4/abc_textfield_activated_mtrl_alpha.9.png"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_list_longpressed_holo.9.png.flat",
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable-mdpi-v4/abc_list_longpressed_holo.9.png"
+    },
+    {
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable_abc_item_background_holo_dark.xml.flat",
+        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable/abc_item_background_holo_dark.xml"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_star_black_36dp.png.flat",
@@ -304,16 +308,16 @@
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable-xxhdpi-v4/abc_spinner_mtrl_am_alpha.9.png"
     },
     {
-        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/cd771360bdd1fbd082acb778d0300b11/res/drawable-mdpi-v4/notification_bg_low_pressed.9.png"
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
+        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable-xxhdpi-v4/abc_cab_background_top_mtrl_alpha.9.png"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable-xxxhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
-        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
-        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable-xxhdpi-v4/abc_cab_background_top_mtrl_alpha.9.png"
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
+        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/cd771360bdd1fbd082acb778d0300b11/res/drawable-mdpi-v4/notification_bg_low_pressed.9.png"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_low_pressed.9.png.flat",
@@ -368,28 +372,28 @@
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/color-v23/abc_tint_spinner.xml"
     },
     {
-        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/color_design_error.xml.flat",
-        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/70fc0476a36eec2a4b345225a88a4380/res/color/design_error.xml"
-    },
-    {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_done.png.flat",
         "source": "/home/mike/proj/android/PartsRunner/app/build/generated/res/pngs/debug/drawable-mdpi/ic_done.png"
+    },
+    {
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/color_design_error.xml.flat",
+        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/70fc0476a36eec2a4b345225a88a4380/res/color/design_error.xml"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_menu_hardkey_panel_mtrl_mult.9.png.flat",
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable-xxhdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
-        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/layout_abc_popup_menu_item_layout.xml.flat",
-        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/layout/abc_popup_menu_item_layout.xml"
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-v21_notification_action_background.xml.flat",
+        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/cd771360bdd1fbd082acb778d0300b11/res/drawable-v21/notification_action_background.xml"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable_abc_textfield_search_material.xml.flat",
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable/abc_textfield_search_material.xml"
     },
     {
-        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-v21_notification_action_background.xml.flat",
-        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/cd771360bdd1fbd082acb778d0300b11/res/drawable-v21/notification_action_background.xml"
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/layout_abc_popup_menu_item_layout.xml.flat",
+        "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/layout/abc_popup_menu_item_layout.xml"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable_tooltip_frame_dark.xml.flat",
@@ -448,12 +452,12 @@
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable-xxxhdpi-v4/abc_ic_star_half_black_48dp.png"
     },
     {
-        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "/home/mike/proj/android/PartsRunner/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
-    },
-    {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-watch-v20_abc_dialog_material_background.xml.flat",
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable-watch-v20/abc_dialog_material_background.xml"
+    },
+    {
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/home/mike/proj/android/PartsRunner/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
@@ -472,12 +476,12 @@
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable-xxxhdpi-v4/abc_ic_star_black_48dp.png"
     },
     {
-        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_build_gold_24dp.png.flat",
-        "source": "/home/mike/proj/android/PartsRunner/app/build/generated/res/pngs/debug/drawable-ldpi/ic_build_gold_24dp.png"
-    },
-    {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable_abc_cab_background_internal_bg.xml.flat",
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable/abc_cab_background_internal_bg.xml"
+    },
+    {
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_build_gold_24dp.png.flat",
+        "source": "/home/mike/proj/android/PartsRunner/app/build/generated/res/pngs/debug/drawable-ldpi/ic_build_gold_24dp.png"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
@@ -820,6 +824,10 @@
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable-xxhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png"
     },
     {
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_save_white_24dp.png.flat",
+        "source": "/home/mike/proj/android/PartsRunner/app/build/generated/res/pngs/debug/drawable-mdpi/ic_save_white_24dp.png"
+    },
+    {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/layout_abc_search_dropdown_item_icons_2line.xml.flat",
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/layout/abc_search_dropdown_item_icons_2line.xml"
     },
@@ -1120,6 +1128,10 @@
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/70fc0476a36eec2a4b345225a88a4380/res/drawable/navigation_empty_icon.xml"
     },
     {
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_save_white_24dp.png.flat",
+        "source": "/home/mike/proj/android/PartsRunner/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_save_white_24dp.png"
+    },
+    {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-v23_abc_control_background_material.xml.flat",
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable-v23/abc_control_background_material.xml"
     },
@@ -1142,6 +1154,10 @@
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_design_ic_visibility_off.png.flat",
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/70fc0476a36eec2a4b345225a88a4380/res/drawable-xxhdpi-v4/design_ic_visibility_off.png"
+    },
+    {
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_save_white_24dp.png.flat",
+        "source": "/home/mike/proj/android/PartsRunner/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_save_white_24dp.png"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-v24_ic_launcher_foreground.xml.flat",
@@ -1294,6 +1310,10 @@
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable_abc_list_selector_holo_light.xml.flat",
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable/abc_list_selector_holo_light.xml"
+    },
+    {
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_save_white_24dp.png.flat",
+        "source": "/home/mike/proj/android/PartsRunner/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_save_white_24dp.png"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_star_half_black_36dp.png.flat",
@@ -1518,6 +1538,10 @@
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable-mdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png"
+    },
+    {
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_save_white_24dp.png.flat",
+        "source": "/home/mike/proj/android/PartsRunner/app/build/generated/res/pngs/debug/drawable-hdpi/ic_save_white_24dp.png"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
@@ -1926,6 +1950,10 @@
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",
         "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/drawable-mdpi-v4/abc_text_select_handle_left_mtrl_dark.png"
+    },
+    {
+        "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_save_white_24dp.png.flat",
+        "source": "/home/mike/proj/android/PartsRunner/app/build/generated/res/pngs/debug/drawable-ldpi/ic_save_white_24dp.png"
     },
     {
         "merged": "/home/mike/proj/android/PartsRunner/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",

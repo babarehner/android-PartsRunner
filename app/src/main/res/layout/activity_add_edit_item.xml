@@ -24,7 +24,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/machine_type"
                 android:layout_weight="1"
-
                 style="@style/CategoryStyle"/>
 
             <Spinner
