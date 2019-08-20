@@ -4,7 +4,7 @@
             "outputFile": "/home/mike/proj/android/PartsRunner/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/11da9b7104a699b0565aea0a23495c66/res/values-v24/values-v24.xml",
+                    "source": "/home/mike/.gradle/caches/transforms-2/files-2.1/10044f649276d94cda27d1e312b59659/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
