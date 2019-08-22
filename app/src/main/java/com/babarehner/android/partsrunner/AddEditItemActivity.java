@@ -144,7 +144,7 @@ package com.babarehner.android.partsrunner;
                  new int[] {android.R.id.text1},
                  0);
 
-         mSpinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+         mSpinAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
          mSpinEquipType.setAdapter(mSpinAdapter);
          // intialize mSpinSymptomVal to first item in spinner in case spinner not touched by user
          CursorWrapper w = (CursorWrapper) mSpinEquipType.getItemAtPosition(0);
