@@ -1,14 +1,16 @@
  apply plugin: 'com.android.application'
 
 android {
-    //ompileSdkVersion 34
+    //compileSdkVersion 35
     defaultConfig {
-        compileSdk 34
+        compileSdk 35
         applicationId "com.babarehner.android.partsrunner"
         minSdkVersion 16
-        targetSdkVersion 34
-        versionCode 160010005
-        versionName "1.0.5"
+        // move up from sdk 34
+        targetSdkVersion 35
+        //versionCode 160010005
+        versionCode 160010006
+        versionName "1.0.6"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -19,6 +21,8 @@ android {
         }
     }
     namespace 'com.babarehner.android.partsrunner'
+    compileSdk 35
+    buildToolsVersion '35.0.0'
 }
 
 dependencies {
