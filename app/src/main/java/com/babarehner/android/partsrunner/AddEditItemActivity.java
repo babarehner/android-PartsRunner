@@ -336,61 +336,6 @@ package com.babarehner.android.partsrunner;
      }
 
 
-/*
-     @Override        // Select from the options menu
-     public boolean onOptionsItemSelected(MenuItem item) {
-         // use if instead of switch
-         switch (item.getItemId()) {
-             case R.id.action_save:
-                 saveMachine();
-                 finish();       // exit activity
-                 return true;
-             case R.id.action_share_email:
-                 //if (mShareActionProvider != null) { }
-                 // returns an intent- temove the old deprecated intent
-                 //mShareActionProvider.setShareIntent(shareData(SHARE_EMAIL));
-                 // Create a new share intent for email
-                 Intent emailIntent = shareData(SHARE_EMAIL);
-                 // Use a chooser to let the user pick their preferred email app
-                 startActivity(Intent.createChooser(emailIntent, "Share via Email"));
-                 Log.v(LOG_TAG, "Sharing via Email intent sent.");
-
-                 // Intent.createChooser(i, " Create Chooser");
-                 Log.v(LOG_TAG, "in action share EMail after String Builder");
-                 return true;
-             case R.id.action_share_text:
-                 if (mShareActionProvider != null){
-                     mShareActionProvider.setShareIntent(shareData(SHARE_TEXT));
-                 }
-                 return true;
-             case R.id.action_delete:
-                 // Alert Dialog for deleting one book
-                 showDeleteConfirmationDialog();
-                 return true;
-             // this is the <- button on the header
-             case android.R.id.home:
-                 // book has not changed
-                 if (!mMachineChanged) {
-                     NavUtils.navigateUpFromSameTask(AddEditItemActivity.this);
-                     return true;
-                 }
-                 // set up dialog to warn user about unsaved changes
-                 DialogInterface.OnClickListener discardButtonClickListener =
-                         new DialogInterface.OnClickListener() {
-                             @Override
-                             public void onClick(DialogInterface dialog, int i) {
-                                 //user click discard. Navigate up to parent activity
-                                 NavUtils.navigateUpFromSameTask(AddEditItemActivity.this);
-                             }
-                         };
-                 // show user they have unsaved changes
-                 showUnsavedChangesDialog(discardButtonClickListener);
-                 return true;
-         }
-         return super.onOptionsItemSelected(item);
-     }
-
- */
 
      @Override        // Select from the options menu
      public boolean onOptionsItemSelected(MenuItem item) {
@@ -402,17 +347,10 @@ package com.babarehner.android.partsrunner;
              return true;
          } else if (itemId == R.id.action_share) {
              // Create a new share intent for email
-             Intent emailIntent = shareData(SHARE_EMAIL);
+             Intent shareIntent = shareData();
              // Use a chooser to let the user pick their preferred email app
-             startActivity(Intent.createChooser(emailIntent, "Share via Email"));
-             Log.v(LOG_TAG, "Sharing via Email intent sent.");
-             return true;
-         } else if (itemId == R.id.action_share) {
-             // Create a new share intent for text messaging
-             Intent textIntent = shareData(SHARE_TEXT);
-             // Use a chooser to let the user pick their preferred messaging app
-             startActivity(Intent.createChooser(textIntent, "Share via Text"));
-             Log.v(LOG_TAG, "Sharing via Text intent sent.");
+             startActivity(Intent.createChooser(shareIntent, "Share Data"));
+             //Log.v(LOG_TAG, "Sharing Data intent sent.");
              return true;
          } else if (itemId == R.id.action_delete) {
              // Alert Dialog for deleting one book
@@ -585,23 +523,7 @@ package com.babarehner.android.partsrunner;
      }
 
 
-
-
-/*
-     private Intent shareData(int shareType){
-         StringBuilder sb = new StringBuilder(buildShareString());
-         ShareDataFragment shareFragment = new ShareDataFragment();
-         Intent intent;
-         if (shareType == SHARE_TEXT) {
-             intent = shareFragment.shareText(mShareActionProvider, sb);
-         }else{
-             intent = shareFragment.shareEMail(mShareActionProvider, sb);
-         }
-         return intent;
-     }
-*/
-
-     private Intent shareData(int shareType) {
+     private Intent shareData() {
          // 1. Get the data to be shared.
          String shareBody = buildShareString().toString();
 
@@ -613,18 +535,19 @@ package com.babarehner.android.partsrunner;
 
          // 4. Add the data to the Intent.
          // The subject is primarily used by email apps.
-         intent.putExtra(Intent.EXTRA_SUBJECT, "Machine Information");
+         intent.putExtra(Intent.EXTRA_SUBJECT, "PartsRunner Data");
          intent.putExtra(Intent.EXTRA_TEXT, shareBody);
+         Log.d(LOG_TAG, "Prepare Intent for Sharing.");
 
          // 5. The shareType parameter is no longer needed, but the logic is kept
          //    in case you want to add specific behavior for email vs. text later.
          //    For now, a generic text/plain intent works for both.
-         if (shareType == SHARE_EMAIL) {
+         /*if (shareType == SHARE_EMAIL) {
              // You could add email-specific extras here if needed, like EXTRA_EMAIL for recipients.
              Log.d(LOG_TAG, "Preparing intent for Email.");
          } else { // SHARE_TEXT
              Log.d(LOG_TAG, "Preparing intent for Text.");
-         }
+         } */
 
          // 6. Return the fully constructed intent.
          return intent;
