@@ -49,8 +49,7 @@
     <string name="edit_update_record_success">Record update succeeded</string>
     <string name="delete_record_failure">Record not deleted (Error)</string>
     <string name="delete_record_successful">Record deleted</string>
-    <string name="share_text">Share as text message</string>
-    <string name="share_email">Share as e-mail</string>
+    <string name="share">Share</string>
     <string name="unable_to_cascade_delete">Unable to Cascade Delete</string>
 
 
