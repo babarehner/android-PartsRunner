@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 Mike Rehner
+ * Copyright (C) 2018,2025 Mike Rehner
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.widget.Toast;
 
 import com.babarehner.android.partsrunner.data.PartsRunnerContract;
 
@@ -95,8 +100,49 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         if (id == R.id.action_edit_equip_types) {
             Intent intent = new Intent(MainActivity.this, EquipmentTypeActivity.class);
             startActivity(intent);
+            return true;  // Keep from falling through to default
+        } else if (id == R.id.action_backup_database){
+            // for Android 8 and below, permissions granted at install time, request permission. Need +> sdk 23 to ask permission
+            // Only ask for runtime permissions on Android 6.0 (Marshmallow- SDK 23) to above Android 9.0 (Pie- SDK 28).
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+                // Check if permission is already granted
+                if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    // Permission has not been granted, so request it.
+                    // The result is handled in onRequestPermissionsResult().
+                    requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                } else {
+                    triggerBackup();
+                }
+            } else {
+                // On versions below Marshmallow (API < 23), permissions are granted at install time.
+                // We don't need to ask. Just proceed with the backup.
+                triggerBackup();
+            }
+            return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    // Handle the result of the permission request (for Android 9 and below)
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission was granted, proceed with backup
+                triggerBackup();
+            } else {
+                // Permission was denied
+                Toast.makeText(this, "Storage permission is required to back up the database.", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+
+    //Creates an instance of the backup helper and executes the backup.
+    private void triggerBackup() {
+        DatabaseBackupHelper backupHelper = new DatabaseBackupHelper(this);
+        backupHelper.executeBackup();
     }
 
 
