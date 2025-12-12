@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+<!-- Copyright (C) 2018, 2025 Mike Rehner -->
+
     <!-- This permission is necessary in order for PartsRunner to perform e-mail access. -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Request permission for API 28 and below. Max SDK is important. Added 1.15.05.1-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"
+        android:maxSdkVersion="28" />
+
 
     <application
         android:allowBackup="true"

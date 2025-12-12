@@ -52,5 +52,7 @@
     <string name="share">Share</string>
     <string name="unable_to_cascade_delete">Unable to Cascade Delete</string>
 
+    <!-- Added 1.15.01.1_backup -->
+    <string name="action_backup_database">Backup Database</string>
 
 </resources>
