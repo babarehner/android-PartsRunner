@@ -50,7 +50,7 @@ public class DatabaseBackupHelper {
                 backupWithFileChannel(dbFile, fileName);
             }
             // Use mContext to show the Toast
-            Toast.makeText(mContext, "Backup saved to Download folder.", Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext, "File 'parts_runner_backup_' saved to Download folder.", Toast.LENGTH_LONG).show();
 
         } catch (IOException e) {
             e.printStackTrace();
